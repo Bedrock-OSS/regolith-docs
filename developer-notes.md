@@ -10,6 +10,12 @@ cd docs
 ./build.bat html
 ```
 
+> [!NOTE]
+> The required dependencies for building the documentation are listed in the `docs/requirements.txt` file. You can install them using `pip`:
+> ```
+> pip install -r requirements.txt
+> ```
+
 This will generate the HTML files in the `docs/_build/html` directory.
 
 To test the compiled HTML files, you can run a local web server using Python:
