@@ -26,9 +26,9 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'sphinx_book_theme'
 html_static_path = ['_static']
 html_css_files = ['css/pixelart_support.css']
-
+html_logo = "_static/title_logo.png"
+html_favicon = "_static/favicon.ico"
 myst_heading_anchors = 3
-
