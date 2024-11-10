@@ -1,7 +1,7 @@
 # Getting Started
 
 ```{note}
-To get started with Regolith, you should first read our {ref}`introduction<what-is-regolith>` page, and the {ref}`installation<installation>` page.
+To get started with Regolith, you should first read our {ref}`introduction<introduction>` page, and the {ref}`installation<installation>` page.
 ```
 
 You can test for installation by running `regolith` inside of a terminal. This guide will assume you have installed regolith directly, but you can follow along with a stand-alone build. Just ensure that the executable is placed inside of your project folder.

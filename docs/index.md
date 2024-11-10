@@ -2,7 +2,7 @@
 :hidden:
 :caption: Introduction
 
-What Is Regolith? <introduction/what-is-regolith>
+Introduction <introduction/introduction>
 Installation <introduction/installation>
 Getting Started <introduction/getting-started>
 Troubleshooting <introduction/troubleshooting>
@@ -25,7 +25,7 @@ Safety <advanced/safety>
 :hidden:
 :caption: Filters
 
-Introduction <filters/filters>
+Filters Introduction <filters/filters-introduction>
 Local Filters <filters/local-filters>
 Custom Filters <filters/custom-filters>
 Online Filters <filters/online-filters>
