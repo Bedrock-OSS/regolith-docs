@@ -2,8 +2,8 @@
 :hidden:
 :caption: Introduction
 
-What Is Regolith? <introduction/what-is-regolith>
-Installing <introduction/installing>
+Introduction <introduction/introduction>
+Installation <introduction/installation>
 Getting Started <introduction/getting-started>
 Troubleshooting <introduction/troubleshooting>
 ```
@@ -25,11 +25,11 @@ Safety <advanced/safety>
 :hidden:
 :caption: Filters
 
-Introduction <filters/filters>
+Filters Introduction <filters/filters-introduction>
 Local Filters <filters/local-filters>
 Custom Filters <filters/custom-filters>
 Online Filters <filters/online-filters>
-Installing Filters <filters/installing-filters>
+Filter Installation <filters/filter-installation>
 Filter Run Modes <filters/filter-run-modes>
 Create a Filter <filters/create-a-filter>
 ```

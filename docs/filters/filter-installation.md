@@ -1,4 +1,4 @@
-(installing-filters)=
+(filter-installation)=
 # Installing and Updating Filters
 
 To start using a filter, you need to do four things:

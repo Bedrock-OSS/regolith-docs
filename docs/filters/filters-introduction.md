@@ -1,3 +1,4 @@
+(filters-introduction)=
 # Filters Introduction
 
 A filter is any program or script that takes the files inside of your RP and BP and *transforms* them in some way. Many of these filters have already been written, and are included as part of the {ref}`standard library<standard-library>`. You may also be interested in {ref}`community filters<community-filters>`
