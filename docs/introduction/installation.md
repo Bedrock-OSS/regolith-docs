@@ -1,5 +1,5 @@
-(installing)=
-# Installing
+(installation)=
+# Installation
 
 ## Windows Installation Using `winget`
 
@@ -34,11 +34,11 @@ Alternatively, you can install Regolith using the MSI file available on GitHub a
 
 Download the MSI file from the link above.
 
-![](./installing/msi-download.png)
+![](./installation/msi-download.png)
 
 Run the MSI file to begin the installation process. Follow the prompts to complete the installation.
 
-![](./installing/regolith-msi.png)
+![](./installation/regolith-msi.png)
 
 #### Updates
 
@@ -57,7 +57,7 @@ This will check for any available updates to Regolith and install them on your s
 
 Regolith can also be installed stand-alone. Simply install the correct zip for your operating system. For Windows, this is most likely `regolith_x.x.x_Windows_x86_64.zip`.
 
-![](./installing/exe-download.png)
+![](./installation/exe-download.png)
 
 You may unzip this package, and place the `regolith.exe` file somewhere convenient. In stand-alone mode, you will need a copy of the regolith executable in every project that you intend to use Regolith with. Or, you can add the executable to your PATH environment variable.
 
@@ -65,4 +65,4 @@ You may unzip this package, and place the `regolith.exe` file somewhere convenie
 
 After installing, Regolith can be used in any command-prompt by typing `regolith`. You should see something like this:
 
-![](./installing/regolith-help.png)
+![](./installation/regolith-help.png)

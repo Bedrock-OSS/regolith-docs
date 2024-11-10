@@ -3,7 +3,7 @@
 :caption: Introduction
 
 What Is Regolith? <introduction/what-is-regolith>
-Installing <introduction/installing>
+Installation <introduction/installation>
 Getting Started <introduction/getting-started>
 Troubleshooting <introduction/troubleshooting>
 ```
@@ -29,7 +29,7 @@ Introduction <filters/filters>
 Local Filters <filters/local-filters>
 Custom Filters <filters/custom-filters>
 Online Filters <filters/online-filters>
-Installing Filters <filters/installing-filters>
+Filter Installation <filters/filter-installation>
 Filter Run Modes <filters/filter-run-modes>
 Create a Filter <filters/create-a-filter>
 ```

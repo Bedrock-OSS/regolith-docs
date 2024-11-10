@@ -1,7 +1,7 @@
 # Getting Started
 
 ```{note}
-To get started with Regolith, you should first read our {ref}`introduction<what-is-regolith>` page, and the {ref}`installation<installing>` page.
+To get started with Regolith, you should first read our {ref}`introduction<what-is-regolith>` page, and the {ref}`installation<installation>` page.
 ```
 
 You can test for installation by running `regolith` inside of a terminal. This guide will assume you have installed regolith directly, but you can follow along with a stand-alone build. Just ensure that the executable is placed inside of your project folder.
@@ -142,4 +142,4 @@ Now that you've created your first Regolith project, and installed your first fi
 
 Otherwise, you can learn about writing {ref}`custom filters<custom-filters>` or
 dive deeper into Regolith commands by reading about {ref}`Filter Run Modes<filter-run-modes>`
-and {ref}`Installing and Updating Filters<installing-filters>`.
+and {ref}`Installing and Updating Filters<filter-installation>`.
