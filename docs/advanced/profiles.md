@@ -1,3 +1,4 @@
+(profiles)=
 # Profiles
 
 A `profile` is a collection of filters, settings, and export information. By default, a Regolith project will be initialized with a single profile, called `default`. You can add additional profiles, as you need them.

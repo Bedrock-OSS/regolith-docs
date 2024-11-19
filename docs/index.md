@@ -5,6 +5,7 @@
 Introduction <introduction/introduction>
 Installation <introduction/installation>
 Getting Started <introduction/getting-started>
+Additional Dependencies <introduction/additional-dependencies>
 Troubleshooting <introduction/troubleshooting>
 ```
 

@@ -3,6 +3,7 @@
 
 Python is an interpreted high-level general-purpose programming language.
 
+(installing-python)=
 ## Installing Python
 
 Before you can run Python filters, you will need to [install python](https://www.python.org/downloads/).
