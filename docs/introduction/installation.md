@@ -60,5 +60,5 @@ After installing, Regolith can be used in command-prompt by typing `regolith`. Y
 ![](./installation/regolith-help.png)
 
 ```{note}
-If you don't see this try restarting your terminal.
+If you don't see this try restarting your terminal. If you encounter any issues, please refer to the {ref}`troubleshooting guide<troubleshooting>` for tips.
 ```
