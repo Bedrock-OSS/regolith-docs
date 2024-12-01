@@ -1,4 +1,9 @@
 # Getting Started
+
+```{warning}
+Regolith is a command line application. It assumes some familiarity with how to navigate and use the command line. You can get a refresher [here](https://tutorial.djangogirls.org/en/intro_to_command_line/).
+```
+
 This tutorial will guide you through basic usage of Regolith. It assumes that you've already installed Regolith. If you haven't, please refer to the {ref}`installation<installation>` page.
 
 At the end of the tutorial, it is shown how to add filter from the internet into your project and run it. Installing filters requires Git, and the filter used as an example runs in Python. If you want to follow allong, you will need get these dependencies. To learn more about getting Git and Python please refer to the {ref}`Additional Dependencies<additional-dependencies>` section.
