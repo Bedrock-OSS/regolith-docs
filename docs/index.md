@@ -7,6 +7,7 @@ Installation <introduction/installation>
 Getting Started <introduction/getting-started>
 Additional Dependencies <introduction/additional-dependencies>
 Troubleshooting <introduction/troubleshooting>
+Safety <introduction/safety>
 ```
 
 ```{toctree}
@@ -19,7 +20,6 @@ Data Folder <advanced/data-folder>
 Export Targets <advanced/export-targets>
 Profiles <advanced/profiles>
 Experiments <advanced/experiments>
-Safety <advanced/safety>
 ```
 
 ```{toctree}
