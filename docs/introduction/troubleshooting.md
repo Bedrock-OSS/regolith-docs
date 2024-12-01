@@ -40,8 +40,10 @@ The most common reason Regolith will crash is from a broken filter. The first st
 
 Filter errors will be printed like `[error][filter] ... `.
 
-### Python Not Found
+### Dependency Not Found
 
-If you get a message like `[+]: Python not found, download and install it from https://www.python.org/downloads/`, this means that Python either not installed, or is not available on the path. 
+If you you get an error like `[+] ... not found, download and install it from ...`, this means that Regolith is unable to find a dependency required for the filter to run. In this case, follow the link provided, and install the dependency.
 
-We provide {ref}`installation instructions<python-filters>`, to help you get Python installed correctly on your system. Please be aware that Python installed via the Microsoft Store will not work with Regolith, as it generally doesn't add itself to path.
+Example errors:
+- Python `[+]: Python not found, download and install it from https://www.python.org/downloads/`
+- NodeJS `[+]: NodeJS not found, download and install it from https://nodejs.org/en/`
