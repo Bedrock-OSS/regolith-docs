@@ -19,6 +19,7 @@ Profiles <advanced/profiles>
 Export Targets <advanced/export-targets>
 User Configuration <advanced/user-configuration>
 Data Folder <advanced/data-folder>
+Go-Simple-Eval <advanced/go-simple-eval>
 Experiments <advanced/experiments>
 ```
 

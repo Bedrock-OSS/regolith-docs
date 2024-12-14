@@ -87,6 +87,7 @@ Below is a list of available format versions and the changes they introduced:
 #### dataPath
 The path to the folder where Regolith will store the data folders of the filters. It's like an extension to `behaviorPack` and `resourcePack` folders, feeding data to your project, but specifically for the Regolith filters.
 
+(filter-definitions)=
 #### filterDefinitions
 Filter definitions is mostly managed by Regolith itself. It contains a list of the filters used in the project. Every time you run the `regolith install` command, Regolith will add a new filter to this list with its version and URL.
 
