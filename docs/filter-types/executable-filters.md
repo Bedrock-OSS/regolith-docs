@@ -36,4 +36,4 @@ platform:
 ```
 
 You can learn more about the `when` property on in the documentation of the "config.json" file
-{ref}`here<configuration-file>`.
+{ref}`here<project-config-file>`.

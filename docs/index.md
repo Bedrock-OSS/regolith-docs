@@ -14,7 +14,7 @@ Safety <introduction/safety>
 :hidden:
 :caption: Advanced
 
-Configuration File <advanced/configuration>
+Project Config File <advanced/project-config-file>
 Profiles <advanced/profiles>
 Export Targets <advanced/export-targets>
 User Configuration <advanced/user-configuration>

@@ -71,7 +71,7 @@ Later on you can play with the additional configuration options, but for now, ju
 Setting the name of the project is important, because Regolith often uses it to generate the names of the exported folders, for example, resource pack and behavior pack folders in the {ref}`"development" export target<export-targets>` by default use the project name as a prefix.
 
 ```{note}
-You can read more about the `config.json` file in the {ref}`Configuration File<configuration-file>` section.
+You can read more about the `config.json` file in the {ref}`Configuration File<project-config-file>` section.
 ```
 
 ## Adding Pack Files

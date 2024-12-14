@@ -1,5 +1,5 @@
-(configuration-file)=
-# Configuration File
+(project-config-file)=
+# Project Config File
 
 The configuration of Regolith project is stored inside of `config.json`, at the top level of your Regolith project. This file will be created when you run `regolith init`.
 
