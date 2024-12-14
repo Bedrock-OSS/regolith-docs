@@ -9,23 +9,14 @@ Git is the most popular version control system in the world. It is also the most
 
 You can download Git from its website: [https://git-scm.com/download/](https://git-scm.com/download/)
 
-(nodejs-dependency)=
-## NodeJS
-NodeJS is a JavaScript runtime. It is also the most popular option for writing Regolith filters. If you're making Minecraft packs, there's a good chance you're already familiar with JavaScript, and have NodeJS installed.
+## Filter Runners
 
-You can download NodeJS here: [https://nodejs.org/en/download/package-manager](https://nodejs.org/en/download/package-manager)
+Regolith supports filters written in various programming languages. To run these filters, you will need to install the appropriate runtime. You can find the installation instruction for each runtime in pages dedicated to different filter types:
+ - {ref}`Python<python-filters>`
+ - {ref}`NodeJS<node-filters>`
+ - {ref}`Deno<deno-filters>`
+ - {ref}`Java<java-filters>`
+ - {ref}`Nim<nim-filters>`
+ - {ref}`.NET<dotnet-filters>`
 
-```{note}
-The [Gametests](https://github.com/Bedrock-OSS/regolith-filters/tree/master/gametests) filter is a very notable filter that for many users could be the main selling point of Regolith. Gametests is a filter that lets you use TypeScript. It compiles the script in the pack using ESBuild.
-
-The unusual name of the filter is a relic of its time of creation. The filter was created before current Scripting API was released. At that time, Minecraft only had the "gametest" API designed for writing tests of the packs. The filter was named after this API.
-```
-
-(python-dependency)=
-## Python
-Python is the second most popular language for writing Regolith filters.
-
-We provide detailed instructions on how to install Python in the {ref}`Python Filters<installing-python>` section.
-
-## Other languages
-Regolith supports many other languages, including writing shell scripts (which basically unlocks the ability to use any language). You can find instructions for installing these languages in the documentation for each filter type.
+The runtimes are optional, unless you want to use filters written in the corresponding language.
