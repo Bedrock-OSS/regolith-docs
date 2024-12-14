@@ -12,14 +12,21 @@ Safety <introduction/safety>
 
 ```{toctree}
 :hidden:
+:caption: Project Configuration
+
+Project Config File <project-configuration/project-config-file>
+Format Versions <project-configuration/format-versions>
+Profiles <project-configuration/profiles>
+Export Targets <project-configuration/export-targets>
+Go-Simple-Eval <project-configuration/go-simple-eval>
+```
+
+```{toctree}
+:hidden:
 :caption: Advanced
 
-Project Config File <advanced/project-config-file>
-Profiles <advanced/profiles>
-Export Targets <advanced/export-targets>
 User Configuration <advanced/user-configuration>
 Data Folder <advanced/data-folder>
-Go-Simple-Eval <advanced/go-simple-eval>
 Experiments <advanced/experiments>
 ```
 
