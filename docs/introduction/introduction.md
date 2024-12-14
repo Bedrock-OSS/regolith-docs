@@ -30,15 +30,15 @@ We refer to these scripts and programs as {ref}`filters<filters-introduction>`. 
 1. `RP`, `BP` and `data` folder are copied into a temporary location.
 2. Every filter is executed in-order, editing temporary files in-place.
 3. The contents of `RP` and `BP` are moved into your export location
-4. If configured, some of the subfolders within `data` can be moved back into your data location
+4. If configured, some of the subfolders within `data` can be moved back into your project.
 
 This compilation flow allows you to make programmatic changes to your compiled addon, without effecting your source files. Since the data folder can be saved back to your project, it's possible to persistantly store the results of running filters there.
 
 ## Why Regolith?
 
-### Extending the Addon Syntax
+### Extending the Packs Syntax
 
-Regolith allows you to create and extend addon-syntax. For example, the [subfunctions](https://github.com/Nusiq/regolith-filters/tree/master/subfunctions) community filter allows you to define functions within functions, without creating an additional file:
+Regolith allows you to create and extend packs syntax. For example, the [subfunctions](https://github.com/Nusiq/regolith-filters/tree/master/subfunctions) filter allows you to define functions within functions, without creating an additional file:
 
 ```
 # Some code
