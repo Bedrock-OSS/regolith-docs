@@ -15,10 +15,10 @@ Safety <introduction/safety>
 :caption: Advanced
 
 Configuration File <advanced/configuration>
+Profiles <advanced/profiles>
+Export Targets <advanced/export-targets>
 User Configuration <advanced/user-configuration>
 Data Folder <advanced/data-folder>
-Export Targets <advanced/export-targets>
-Profiles <advanced/profiles>
 Experiments <advanced/experiments>
 ```
 
