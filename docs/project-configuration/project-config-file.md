@@ -11,10 +11,6 @@ Regolith follows the [Project Config Standard](https://github.com/Bedrock-OSS/pr
 
 Regolith builds on this standard with the addition of the `regolith` namespace, which is where all regolith-specific information is stored.
 
-```{warning}
-This page only shows an example configuration. There are other documentation pages to fully explain concepts such as `filters` and `profiles`.
-```
-
 Example configuration file:
 ```json
 {
@@ -80,7 +76,7 @@ The path to the folder where Regolith will store the data folders of the filters
 
 (filter-definitions)=
 #### filterDefinitions
-Filter definitions is mostly managed by Regolith itself. It contains a list of the filters used in the project. Every time you run the `regolith install` command, Regolith will add a new filter to this list with its version and URL.
+Filter definitions field is mostly managed by Regolith itself. It contains a list of the filters used in the project. Every time you run the `regolith install` command, Regolith will add a new filter to this list with its version and URL.
 
 The only time you should manually edit this field is when you want create a {ref}`local filter<local-filters>`.
 
