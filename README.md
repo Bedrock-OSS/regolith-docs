@@ -1,7 +1,7 @@
 # Intorduction
 The repository of the documentation of the Regolith project.
 
-- If you're looking for the hosted documentation, you can find it here: [regolith-docs.readthedocs.io/](regolith-docs.readthedocs.io/)
+- If you're looking for the hosted documentation, you can find it here: [https://regolith-docs.readthedocs.io/](https://regolith-docs.readthedocs.io/)
 - If you're looking for Regolith repository, you can find it here: [https://github.com/Bedrock-OSS/regolith/](https://github.com/Bedrock-OSS/regolith/)
 
 # Contributing
