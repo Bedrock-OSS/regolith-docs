@@ -12,7 +12,7 @@ You can run specific profiles using the `regolith run <profile name>` command.
 A profile is a JSON object, that you define in the `config.json` file inside the `profiles` object. The code snippet below shows their structure, you can view the structure of an example `config.json` file {ref}`here<project-config-file>`.
 
 ```json
-{ // "profiles": {
+"profiles": {
   "default": {
     "export": {
       "target": "development",
