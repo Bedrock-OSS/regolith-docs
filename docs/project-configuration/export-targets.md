@@ -20,7 +20,7 @@ The development export target will place the compiled packs into your `com.mojan
 ```
 
 Properties:
-- `build` - The Minecraft Edition to export to. Can be `standard`, `preview` or `education`. You can fake the `com.mojang` path using {ref}`environment variables<build-targets-for-non-windows-users>`.
+- `build` - The Minecraft Edition to export to. Can be `standard`, `preview` or `education`. You can fake the `com.mojang` path using {ref}`export target environment variables<export-target-environment-variables>`.
 - `rpName` (optional) - The {ref}`go-simple-eval<go-simple-eval>` expression used to generate the name of the resource pack folder. If not specified, defaults to `"project.name+'_rp'"`.
 - `bpName` (optional) - The {ref}`go-simple-eval<go-simple-eval>` expression used to generate the name of the behavior pack folder. If not specified, defaults to `"project.name+'_bp'"`.
  - `readOnly` (optional) - If set to `true`, the exported files will be read-only. The default value is `false`.
@@ -87,7 +87,7 @@ The World export target will place the compiled files into a specific world. Thi
 There are two ways of using the `"world"` export target, by specifying the `worldName` or `worldPath` property.
 
 Properties when using the world name:
-- `build` - The Minecraft Edition to export to. Can be `standard`, `preview` or `education`. You can fake the `com.mojang` path using {ref}`environment variables<build-targets-for-non-windows-users>`.
+- `build` - The Minecraft Edition to export to. Can be `standard`, `preview` or `education`. You can fake the `com.mojang` path using {ref}`export target environment variables<export-target-environment-variables>`.
 - `worldName` - The name of the world to export to. Regolith uses the *levelname.txt* file stored in the world files to determine the name of the world.
 
 Properties when using the world path:
@@ -98,10 +98,15 @@ Shared properties:
 - `bpName` - The {ref}`go-simple-eval<go-simple-eval>` expression used to generate the name of the behavior pack folder. If not specified, defaults to `"project.name+'_bp'"`.
 - `readOnly` (optional) - If set to `true`, the exported files will be read-only. The default value is `false`.
 
-(build-targets-for-non-windows-users)=
-## Build Targets for Non-Windows Users
 
-Some of the export targets listed below wouldn't make sense on systems other than Windows with Minecraft installed. They often rely on finding the `com.mojang` path first, and then placing the files in a path relative to that. This problem can be solved by setting environment variables that Regolith will use instead of the `com.mojang` path.
+(export-target-environment-variables)=
+## Export Target Environment Variables
+
+```{warning}
+These environment variables are only available for non-Windows users.
+```
+
+Some of the export targets listed above wouldn't make sense on systems other than Windows with Minecraft installed. They often rely on finding the `com.mojang` path first, and then placing the files in a path relative to that. This problem can be solved by setting environment variables that Regolith will use instead of the `com.mojang` path.
 
 - `COM_MOJANG` - A fake path to the `com.mojang` folder in regular Minecraft releases. This is used by the `development` build.
 - `COM_MOJANG_PREVIEW` - A fake path to the `com.mojang` folder in Minecraft preview releases. This is used by the `preview` build.
