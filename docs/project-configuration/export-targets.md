@@ -1,41 +1,14 @@
 (export-targets)=
 # Export Targets
 
-Export Targets determine where your generated files will go, after Regolith is finished compiling. You can set this target at the top level of Regolith, but it can be overridden inside individual profiles, if needed.
+Export Targets are defined in {ref}`profileds<profiles>` and determine where your generated files will go, after Regolith is finished compiling.
 
-Export is an object, and the keys inside determine how it will function. The `target` key is required, but some export targets require additional keys.
+All of the export settings require using the `target` property. Some of the export targets require additional properties. Sections below lists all of the available export targets.
 
-## Configuration
+## Export Target Types
+### Development Export Target
 
-Some configuration properties may be used with all export targets.
-
-### readOnly
-
-`readOnly` changes the permissions of exported files to read-only. The default value is `false`. This property can be used to protect against accidental editing of files that should only be edited by Regolith!
-
-## Additional Configuration for Non-Windows Users
-
-Some of the export targets listed below wouldn't make sense on systems other than Windows with Minecraft installed. They often rely on finding the `com.mojang` path first, and then placing the files in a path relative to that. This problem can be solved by setting environment variables that Regolith will use instead of the `com.mojang` path.
-
-- `COM_MOJANG_PREVIEW` - A fake path to the `com.mojang` folder in Minecraft preview releases. This is used by the `preview` export target.
-- `COM_MOJANG` - A fake path to the `com.mojang` folder in regular Minecraft releases.
-
-## Available Export Targets
-
-These are the export targets that Regolith offers.
-
-### Development
-
-The development export target will place the compiled packs into your `com.mojang` `development_*_packs` folders of the specified Minecraft build (standard, preview or education endition).
-
-```json
-"export": {
-    "target": "development",
-    "build": "standard" // or "preview" or "education"
-}
-```
-
-Optionally, you can use `rpName` and `bpName` to specify the names of the folders that will be created in the `development_*_packs` folders. You can read more about these options at the end of this page of the documentation.
+The development export target will place the compiled packs into your `com.mojang` `development_*_packs` folders of the specified Minecraft build - Bedrock Edition, Education Edition or Preview.
 
 ```json
 "export": {
@@ -46,17 +19,15 @@ Optionally, you can use `rpName` and `bpName` to specify the names of the folder
 }
 ```
 
-### Local
+Properties:
+- `build` - The Minecraft Edition to export to. Can be `standard`, `preview` or `education`. You can fake the `com.mojang` path using {ref}`environment variables<build-targets-for-non-windows-users>`.
+- `rpName` (optional) - The {ref}`go-simple-eval<go-simple-eval>` expression used to generate the name of the resource pack folder. If not specified, defaults to `"project.name+'_rp'"`.
+- `bpName` (optional) - The {ref}`go-simple-eval<go-simple-eval>` expression used to generate the name of the behavior pack folder. If not specified, defaults to `"project.name+'_bp'"`.
+ - `readOnly` (optional) - If set to `true`, the exported files will be read-only. The default value is `false`.
+
+### Local Export Target
 
 This export target will place the compiled packs into a folder called `build`, created in your regolith project. This export target is mostly useful for quick testing.
-
-```json
-"export": {
-    "target": "local"
-}
-```
-
-Local export optionally accepts `rpName` and `bpName` to specify the names of the folders that will be created in the `build` folders. You can read more about these options at the end of this page of the documentation.
 
 ```json
 "export": {
@@ -66,15 +37,25 @@ Local export optionally accepts `rpName` and `bpName` to specify the names of th
 }
 ```
 
+Properties:
+- `rpName` (optional) - The {ref}`go-simple-eval<go-simple-eval>` expression used to generate the name of the resource pack folder. If not specified, defaults to `"project.name+'_rp'"`.
+- `bpName` (optional) - The {ref}`go-simple-eval<go-simple-eval>` expression used to generate the name of the behavior pack folder. If not specified, defaults to `"project.name+'_bp'"`.
+- `readOnly` (optional) - If set to `true`, the exported files will be read-only. The default value is `false`.
+
+### None Export Target
+The `none` export target runs Regolith without exporting the files anywhere. This is useful when you have a filter that exports the files in some other custom way.
+
+```json
+"export": {
+    "target": "none"
+}
+```
+The `none` doesn't have any additional properties.
 
 
-### Exact
+### Exact Export Target
 
 The Exact export target will place the files to specific, user specified locations. This is useful when you need absolute control over Regoliths export functionality.
-
-`rpPath` and `bpPath` are required options. Both paths support environment variables by using the `%VARIABLE_NAME%` syntax.
-
-Example:
 
 ```json
 "export": {
@@ -84,48 +65,44 @@ Example:
 }
 ```
 
-The exact export target doesn't support using `rpName` and `bpName`. The `rpPath` and `bpPath` should provide full paths to the desired locations.
+Properties:
+- `rpPath` - The path to the resource pack folder. The path can be relative or absolute and supports environment variables by using the `%VARIABLE_NAME%` syntax.
+- `bpPath` - The path to the behavior pack folder. The path can be relative or absolute and supports environment variables by using the `%VARIABLE_NAME%` syntax.
+- `readOnly` (optional) - If set to `true`, the exported files will be read-only. The default value is `false`.
 
-### World
+### World Export Target
 
 The World export target will place the compiled files into a specific world. This is useful for teams that prefer working in-world, as opposed to in the development pack folders.
-
-You need to use *either* `worldName` or `worldPath` to select the world. `worldPath` supports environment variables by using the `%VARIABLE_NAME%` syntax. If you use `worldName`, you have to specify the Minecraft build you're using - `standard`, `preview` or `education`.
-
-Example:
 
 ```json
 "export": {
     "target": "world",
     "build": "standard",
-    "worldName": "..."  // This
-    // "worldPath": "..."   // OR this
-}
-```
-
-Optionally, you can use `rpName` and `bpName` to specify the names of the folders that will be created in the world. You can read more about these options at the end of this page of the documentation.
-
-```json
-"export": {
-    "target": "world",
-    "worldPath": "...",
+    "worldName": "...",      // This
+    // "worldPath": "...",   // OR this
     "rpName": "'my_rp'",
     "bpName": "'my_bp'"
 }
 ```
+There are two ways of using the `"world"` export target, by specifying the `worldName` or `worldPath` property.
 
-## The `rpName` and `bpName` expressions
+Properties when using the world name:
+- `build` - The Minecraft Edition to export to. Can be `standard`, `preview` or `education`. You can fake the `com.mojang` path using {ref}`environment variables<build-targets-for-non-windows-users>`.
+- `worldName` - The name of the world to export to. Regolith uses the *levelname.txt* file stored in the world files to determine the name of the world.
 
-The `rpName` and `bpName` are expressions evaulated using the [go-simple-eval](https://github.com/stirante/go-simple-eval/) library. They let you specify the names of the folders of the exported packs in some of the export targets.
+Properties when using the world path:
+- `worldPath` - The complete path to the world to export to. The path can be relative or absolute and supports environment variables by using the `%VARIABLE_NAME%` syntax.
 
-The go-simple-eval library allows you to use simple expressions to generate the names of the folders. The expressions can use the following variables:
+Shared properties:
+- `rpName` - The {ref}`go-simple-eval<go-simple-eval>` expression used to generate the name of the resource pack folder. If not specified, defaults to `"project.name+'_rp'"`.
+- `bpName` - The {ref}`go-simple-eval<go-simple-eval>` expression used to generate the name of the behavior pack folder. If not specified, defaults to `"project.name+'_bp'"`.
+- `readOnly` (optional) - If set to `true`, the exported files will be read-only. The default value is `false`.
 
-- `project.name` - The name of the project.
-- `project.author` - The author of the project.
-- `os` - The host operating system.
-- `arch` - The host architecture.
-- `debug` - whether regolith is running in debug mode or not.
-- `version` - The version of regolith.
-- `profile` - The name of the profile being run.
+(build-targets-for-non-windows-users)=
+## Build Targets for Non-Windows Users
 
-Go-simple-eval can concatenate strings using the `+` operator. The strings must be enclosed in single quotes.
+Some of the export targets listed below wouldn't make sense on systems other than Windows with Minecraft installed. They often rely on finding the `com.mojang` path first, and then placing the files in a path relative to that. This problem can be solved by setting environment variables that Regolith will use instead of the `com.mojang` path.
+
+- `COM_MOJANG` - A fake path to the `com.mojang` folder in regular Minecraft releases. This is used by the `development` build.
+- `COM_MOJANG_PREVIEW` - A fake path to the `com.mojang` folder in Minecraft preview releases. This is used by the `preview` build.
+- `COM_MOJANG_EDU` - A fake path to the `com.mojang` folder in Minecraft Education Edition releases. This is used by the `education` build.
