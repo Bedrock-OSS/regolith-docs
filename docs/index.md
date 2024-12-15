@@ -4,8 +4,8 @@
 
 Introduction <introduction/introduction>
 Installation <introduction/installation>
-Getting Started <introduction/getting-started>
 Additional Dependencies <introduction/additional-dependencies>
+Getting Started <introduction/getting-started>
 Troubleshooting <introduction/troubleshooting>
 Safety <introduction/safety>
 ```

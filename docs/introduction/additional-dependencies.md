@@ -5,7 +5,7 @@ Regolith can be used as a stand-alone tool for generating Minecraft packs with y
 
 (git-dependency)=
 ## Git
-Git is the most popular version control system in the world. It is also the most important dependency of Regolith. Without Git, you won't be able to install filters in your projects. Regolith uses Git to download filters from the internet repositories like GitHub.
+Git is the most popular version control system in the world. It is also the most important dependency of Regolith. Without Git, you won't be able to install filters from the interent in your projects. Regolith uses Git to download filters from online repositories like GitHub.
 
 You can download Git from its website: [https://git-scm.com/download/](https://git-scm.com/download/)
 
@@ -19,4 +19,7 @@ Regolith supports filters written in various programming languages. To run these
  - {ref}`Nim<nim-filters>`
  - {ref}`.NET<dotnet-filters>`
 
-The runtimes are optional, unless you want to use filters written in the corresponding language.
+The runtimes are optional, unless you want to use filters written in the corresponding language. Some of the filter types don't require any runtime:
+
+- {ref}`Shell Filters<shell-filters>` run shell commands directly.
+- {ref}`Executable Filters<executable-filters>` use compiled executables.
