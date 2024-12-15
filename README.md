@@ -54,6 +54,8 @@ To link to that section, you can use the following syntax:
 {ref}`Text To Display<your-label>`
 ```
 
+When you build the documentation using the `make.bat` script, the commandline output will print warnings about the labels that aren't used or the references that are broken.
+
 ### Note and Warning Boxes
 You can create a colored box for notes and warnings by using the following syntax:
 ````markdown
