@@ -45,6 +45,7 @@ The code above defines two profiles, `default` and `otherProfile`. The `default`
 ### Export Properties
 Export field defines where the files will be exported. It's relatively complex, so it has its own page {ref}`here<export-targets>`.
 
+(project-config-filters-properties)=
 ### Filters Properties
 
 The filters field is an array of objects with references to the project's filters specified in {ref}`filterDefinitions<filter-definitions>`. They may also contain additional properties defining how to run the filter and under what conditions.
@@ -55,6 +56,7 @@ Filter is a required filed that references the filter to run. The filter must be
 #### arguments
 Arguments is an optional field that specify the command-line arguments to pass to the filter when it runs. It's an array of strings that are passed as arguments to the filter. Different filters may use this field differently, so you should refer to the filter's documentation for more information.
 
+(project-config-filters-properties-settings)=
 #### settings
 Settings, like arguments, is an optional field that affects the command-line arguments. When it's present, its content is passed to the filter as a JSON string as the first argument. Different filters may use this field differently, so you should refer to the filter's documentation for more information.
 
