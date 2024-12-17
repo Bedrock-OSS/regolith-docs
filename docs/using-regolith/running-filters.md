@@ -1,5 +1,4 @@
-(filter-run-modes)=
-# Filter Run Modes
+# Running Filters
 
 There are 3 ways of running Regolith:
 - `regolith run`

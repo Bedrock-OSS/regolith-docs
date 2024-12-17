@@ -23,39 +23,47 @@ Go-Simple-Eval <project-configuration/go-simple-eval>
 
 ```{toctree}
 :hidden:
-:caption: Advanced
+:caption: Using Regolith
 
-User Configuration <advanced/user-configuration>
-Data Folder <advanced/data-folder>
-Experiments <advanced/experiments>
+Help & Autocompletion <using-regolith/help-and-autocompletion>
+Installing Filters <using-regolith/installing-filters>
+Updating Filters <using-regolith/updating-filters>
+Filter Versioning <using-regolith/filter-versioning>
+Filter Resolvers <using-regolith/filter-resolvers>
+Running Filters <using-regolith/running-filters>
+Project Cache <using-regolith/project-cache>
+User Configuration <using-regolith/user-configuration>
+Experiments <using-regolith/experiments>
+Data Folder <using-regolith/data-folder>
+
 ```
 
 ```{toctree}
 :hidden:
 :caption: Filters
 
-Filters Introduction <filters/filters-introduction>
-Local Filters <filters/local-filters>
-Custom Filters <filters/custom-filters>
-Online Filters <filters/online-filters>
-Filter Installation <filters/filter-installation>
-Filter Run Modes <filters/filter-run-modes>
-Create a Filter <filters/create-a-filter>
+Filter Introduction <filters/filter-introduction>
+Java Filters <filters/java-filters>
+.NET Filters <filters/dotnet-filters>
+Nim Filters <filters/nim-filters>
+Python Filters <filters/python-filters>
+Shell Filters <filters/shell-filters>
+NodeJS Filters <filters/node-filters>
+Deno Filters <filters/deno-filters>
+Profile Filters <filters/profile-filters>
+Executable Filters <filters/executable-filters>
 ```
 
 ```{toctree}
 :hidden:
-:caption: Filter Types
+:caption: Developing Filters
 
-Java Filters <filter-types/java-filters>
-.NET Filters <filter-types/dotnet-filters>
-Nim Filters <filter-types/nim-filters>
-Python Filters <filter-types/python-filters>
-Shell Filters <filter-types/shell-filters>
-NodeJS Filters <filter-types/node-filters>
-Deno Filters <filter-types/deno-filters>
-Profile Filters <filter-types/profile-filters>
-Executable Filters <filter-types/executable-filters>
+Local Filters <developing-filters/local-filters>
+Online Filters <developing-filters/online-filters>
+Publishing Filters <developing-filters/publishing-filters>
+Custom Filter Resolvers <developing-filters/custom-filter-resolvers>
+Custom Filters <developing-filters/custom-filters>
+Create a Filter <developing-filters/create-a-filter>
 ```
 
 ```{toctree}

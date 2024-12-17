@@ -5,6 +5,6 @@ A filter is any program or script that takes the files inside of your RP and BP 
 
 At it's core, you can think of a filter as the ability to run arbitrary code during the compilation process. This allows you to accomplish a number of tasks:
 
- - Linting and error checking
- - Code generation/automation
- - Interpreting custom syntax
+- Linting and error checking
+- Code generation/automation
+- Interpreting custom syntax
