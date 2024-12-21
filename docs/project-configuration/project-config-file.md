@@ -80,5 +80,21 @@ Filter definitions field is mostly managed by Regolith itself. It contains a lis
 
 The only time you should manually edit this field is when you want create a {ref}`local filter<local-filters>`.
 
+The syntax of the `filterDefinitions` field is as follows:
+```json
+"filterDefinitions": {
+    "name_ninja": {
+        "url": "github.com/Bedrock-OSS/regolith-filters",
+        "version": "1.2.4"
+    },
+    "local_filter": {
+        "runWith": "python",
+        "script": "filters/local_filter/main.py"
+    },
+}
+```
+In this example `name_ninja` is a filter downloaded from the internet with {ref}`pinned version<filter-versioning>` 1.2.4, and the `local_filter` is a Python filter that is stored locally.
+
+
 #### profiles
 Profiles are sequences of filters that you can run with the `regolith run` command. You can read more about them in the {ref}`profiles page<profiles>`.

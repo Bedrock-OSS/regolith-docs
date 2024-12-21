@@ -56,7 +56,6 @@ Filter is a required filed that references the filter to run. The filter must be
 #### arguments
 Arguments is an optional field that specify the command-line arguments to pass to the filter when it runs. It's an array of strings that are passed as arguments to the filter. Different filters may use this field differently, so you should refer to the filter's documentation for more information.
 
-(project-config-filters-properties-settings)=
 #### settings
 Settings, like arguments, is an optional field that affects the command-line arguments. When it's present, its content is passed to the filter as a JSON string as the first argument. Different filters may use this field differently, so you should refer to the filter's documentation for more information.
 

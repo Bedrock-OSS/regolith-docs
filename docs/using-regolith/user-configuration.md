@@ -1,3 +1,4 @@
+(user-configuration)=
 # User Configuration
 
 User configuration file is stored in the Regolith app data folder. On Windows, it's

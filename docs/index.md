@@ -27,11 +27,11 @@ Go-Simple-Eval <project-configuration/go-simple-eval>
 
 Help & Autocompletion <using-regolith/help-and-autocompletion>
 Installing Filters <using-regolith/installing-filters>
-Updating Filters <using-regolith/updating-filters>
 Filter Versioning <using-regolith/filter-versioning>
+Updating Filters <using-regolith/updating-filters>
 Filter Resolvers <using-regolith/filter-resolvers>
 Running Filters <using-regolith/running-filters>
-Project Cache <using-regolith/project-cache>
+Regolith Cache <using-regolith/regolith-cache>
 User Configuration <using-regolith/user-configuration>
 Experiments <using-regolith/experiments>
 Data Folder <using-regolith/data-folder>
