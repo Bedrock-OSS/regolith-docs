@@ -88,3 +88,7 @@ In some situations, you may want to skip the waiting time and force the cache up
 
 You can change the default cooldown times for downloading in your {ref}`user configuration<user-configuration>`.
 
+If you want to update the filter resolvers, without installing any filters, you can use the following command:
+```text
+regolith update-resolvers
+```
