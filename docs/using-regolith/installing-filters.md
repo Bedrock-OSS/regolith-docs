@@ -26,7 +26,7 @@ The value of `filter_identifier` will depend on the URL where the filter is host
 
 
 For example, to install the `name_ninja` filter (which is one of the filters created by Bedrock-OSS), you would run:
-```
+```text
 regolith install name_ninja
 ```
 
@@ -34,12 +34,12 @@ If the filter is not listed on the resolver repository, you need to use the foll
 `github.com/<user>/<repository>/<folder>`.
 
 For example, to install `name_ninja` using the full format, you would run:
-```
+```text
 regolith install github.com/Bedrock-OSS/regolith-filters/name_ninja
 ```
 
 The install command accepts multiple arguments, so you can install quickly install multiple fliters by running `regolith install <filter1> <filter2>...`, for example:
-```
+```text
 regolith install name_ninja texture_list
 ```
 
@@ -65,7 +65,7 @@ After installing, the filter will appear inside `filterDefinitions` of `config.j
 ```
 
 If the filter doesn't need any {ref}`additional configuration<project-config-filters-properties>` you can append it to the end of the list of the filters of the profile by using the `--profile` flag. For example:
-```
+```text
 regolith install name_ninja --profile=default
 ```
 This command would append the filter to the filters list of the default profile.

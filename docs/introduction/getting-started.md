@@ -11,7 +11,7 @@ At the end of the tutorial, it is shown how to add filter from the internet into
 ## Creating a new Project
 
 To create a new project, navigate to a blank folder, and run the following command:
-```
+```text
 regolith init
 ```
 
@@ -99,7 +99,7 @@ Regolith contains a very powerful filter system, that allows you to write filter
 As an example, we will use the `texture_list` filter, which automatically creates the `textures_list.json` file for you. To learn more about this file, and why automating it is helpful, read [here](https://wiki.bedrock.dev/concepts/textures-list.html).
 
 You can install this filter by running the following command:
-```
+```text
 regolith install texture_list --profile=default
 ``` 
 This command adds the filter to your project, and appends it to the "default" profile.

@@ -4,13 +4,13 @@
 
 Regolith has a build in help command to explore its features. You can use it to get the list of the commands with their explanation. To get help simply run the following command:
 
-```
+```text
 regolith help
 ```
 
 If you want to learn about specific subcommand for example `regolith run`, run `regolith help <subcommand>` like this:
 
-```
+```text
 regolith help run
 ```
 
