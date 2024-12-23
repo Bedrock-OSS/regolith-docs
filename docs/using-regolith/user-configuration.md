@@ -7,6 +7,8 @@ preferences for Regolith.
 
 ## Available Options
 
+
+(use-project-app-data-storage)=
 ### `use_project_app_data_storage: bool`
 
 Default: `false`
