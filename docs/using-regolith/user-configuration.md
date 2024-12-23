@@ -1,9 +1,7 @@
 (user-configuration)=
 # User Configuration
 
-User configuration file is stored in the Regolith app data folder. On Windows, it's
-`%localappdata%\regolith\user_config.json`**\***. The file is used to store the user
-preferences for Regolith.
+User configuration file is stored in the Regolith app data folder. On Windows, it's `%localappdata%\regolith\user_config.json`**\***. The file is used to store the user preferences for Regolith.
 
 ## Available Options
 
@@ -41,12 +39,9 @@ The cooldown between cache updates for the filters. The cooldown is specified in
 
 ## The `regolith config` command
 
-The `regolith config` command is used to manage the user configuration of Regolith. It can access and modify
-the user configuration file. The data is stored in the application data folder in the
-"user_config.json" file.
+The `regolith config` command is used to manage the user configuration of Regolith. It can access and modify the user configuration file. The data is stored in the application data folder in the "user_config.json" file.
 
-The behavior of the command changes based on the used flags and the number of provided arguments.
-The cheetsheet below shows the possible combinations of flags and arguments and what they do:
+The behavior of the command changes based on the used flags and the number of provided arguments. The cheetsheet below shows the possible combinations of flags and arguments and what they do:
 
 - `regolith config` - printing all properties
 - `regolith config <key>` - printing specified property
@@ -56,14 +51,11 @@ The cheetsheet below shows the possible combinations of flags and arguments and 
 - `regolith config <key> <value> --index <index>` - replacing item in a list property
 - `regolith config <key> --index <index> --delete` - deleting item in a list property
 
-The commands that print text can take the `--full` flag to print configuration with the default values
-included (if they're not defined in the config file). Without the flag, the undefined properties
-will be printed as null or empty list.
+The commands that print text can take the `--full` flag to print configuration with the default values included (if they're not defined in the config file). Without the flag, the undefined properties will be printed as null or empty list.
 
 ## The structure of the user configuration file
 
-The `user_config.json` file is just a regular JSON file without any nesting. You can edit it manually
-if you want to but you don't have to because everything can be done with the `regolith config` command.
+The `user_config.json` file is just a regular JSON file without any nesting. You can edit it manually if you want to but you don't have to because everything can be done with the `regolith config` command.
 
 ## Example config file
 ```json
