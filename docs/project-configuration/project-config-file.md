@@ -71,6 +71,7 @@ Everything inside the `regolith` field contains Regolith-specific information.
 #### formatVersion
 The version of the Regolith configuration format. This is used to determine how Regolith should read the configuration file. Usually, you don't have to worry about this field, Regolith will create it for you when you initialize a project. You can read more about it on the {ref}`format versions page<format-versions>`.
 
+(project-config-data-path)=
 #### dataPath
 The path to the folder where Regolith will store the data folders of the filters. It's like an extension to `behaviorPack` and `resourcePack` folders, feeding data to your project, but specifically for the Regolith filters.
 

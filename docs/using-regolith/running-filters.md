@@ -1,3 +1,4 @@
+(running-filters)=
 # Running Filters
 
 There are 3 ways of running Regolith:
