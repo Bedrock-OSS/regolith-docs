@@ -1,11 +1,11 @@
 (shell-filters)=
 # Shell Filters
 
-Shell Filters allow you to run arbitrary shell commands. This is useful for running scripts that are not natively supported in Regolith.
+Shell filters allow you to run arbitrary shell commands. This is useful for running scripts that are not natively supported in Regolith.
 
-## Running arbitrary Shell command as Filter
+## Shell Filter Definition
 
-The syntax for running a shell script is this:
+The structure of the Shell filter definition is described below. You can read how to use it in the {ref}`Filter Definition<filter-definition>` section.
 
 ```json
 {
@@ -14,11 +14,5 @@ The syntax for running a shell script is this:
 }
 ```
 
-Here is another example:
-
-```json
-{
-  "runWith": "shell",
-  "command": "python -u ./filters/my_filter.py"
-}
-```
+- `runWith` - always set to `shell`, marks this filter as a Shell filter.
+- `command` - the shell command to run.

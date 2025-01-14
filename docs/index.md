@@ -43,15 +43,14 @@ Data Folder <using-regolith/data-folder>
 :caption: Filters
 
 Filter Introduction <filters/filter-introduction>
-Java Filters <filters/java-filters>
 .NET Filters <filters/dotnet-filters>
+Deno Filters <filters/deno-filters>
+Executable Filters <filters/executable-filters>
+Java Filters <filters/java-filters>
 Nim Filters <filters/nim-filters>
+NodeJS Filters <filters/node-filters>
 Python Filters <filters/python-filters>
 Shell Filters <filters/shell-filters>
-NodeJS Filters <filters/node-filters>
-Deno Filters <filters/deno-filters>
-Profile Filters <filters/profile-filters>
-Executable Filters <filters/executable-filters>
 ```
 
 ```{toctree}
@@ -59,6 +58,7 @@ Executable Filters <filters/executable-filters>
 :caption: Developing Filters
 
 Local Filters <developing-filters/local-filters>
+Filter Definition<developing-filters/filter-definition>
 Online Filters <developing-filters/online-filters>
 Publishing Filters <developing-filters/publishing-filters>
 Custom Filter Resolvers <developing-filters/custom-filter-resolvers>

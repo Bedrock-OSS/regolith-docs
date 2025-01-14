@@ -77,7 +77,7 @@ The path to the folder where Regolith will store the data folders of the filters
 
 (filter-definitions)=
 #### filterDefinitions
-Filter definitions field is mostly managed by Regolith itself. It contains a list of the filters used in the project. Every time you run the `regolith install` command, Regolith will add a new filter to this list with its version and URL.
+Filter definitions field contains a list of the filters used in the project. Every time you run the `regolith install` command, Regolith will add a new filter to this list with its version and URL, so the field is mostly managed by Regolith.
 
 The only time you should manually edit this field is when you want create a {ref}`local filter<local-filters>`.
 
@@ -86,7 +86,8 @@ The syntax of the `filterDefinitions` field is as follows:
 "filterDefinitions": {
     "name_ninja": {
         "url": "github.com/Bedrock-OSS/regolith-filters",
-        "version": "1.2.4"
+        "version": "1.2.4",
+        "venvSlot": 0
     },
     "local_filter": {
         "runWith": "python",
@@ -96,6 +97,11 @@ The syntax of the `filterDefinitions` field is as follows:
 ```
 In this example `name_ninja` is a filter downloaded from the internet with {ref}`pinned version<filter-versioning>` 1.2.4, and the `local_filter` is a Python filter that is stored locally.
 
+```{note}
+The `venvSlot` property used in the example only make sense in the context of Python filters and very rarely needs to be specified. It is unique in a way that you can specify it in the remote filter definition, and it will be copied to the filter definitions defined in the {ref}`filter.json<online-filter-definition>` file. You can read more about it in the {ref}`venv handling<venv-handling>` section of the Python filters page.
+```
+
+The syntax used for the local filters is different basedon the filter kind. You can read more about it in the {ref}`filter definition page<filter-definition>`.
 
 #### profiles
 Profiles are sequences of filters that you can run with the `regolith run` command. You can read more about them in the {ref}`profiles page<profiles>`.

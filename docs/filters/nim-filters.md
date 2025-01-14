@@ -1,32 +1,29 @@
 (nim-filters)=
 # Nim Filters
 
-Nim is a statically typed compiled systems programming language. It combines successful concepts from mature languages like Python, Ada and Modula. 
+Nim filters compile and run Nim programs from their source code. Nim filters are stored as the source code and may have additional dependencies that Regolith will download for you during `regolith install` execution.
 
 ## Installing Nim
 
-  1. Download the newest version of [choosenim.](https://nim-lang.org/install_windows.html)
-  2. Open a terminal in the same directory that you downloaded `choosenim`.
-  3. Run `choosenim --firstInstall`
+You can download Nim from the [official website](https://nim-lang.org/install.html). We recommend using the `choosenim` tool (also available on the official website) to install Nim.
 
-## Running Nim code as Filter
+## Nim Filter Definition
 
-The syntax for running a nim filter is this:
+The structure of the Nim filter definition is described below. You can read how to use it in the {ref}`Filter Definition<filter-definition>` section.
 
 ```json
 {
   "runWith": "nim",
   "script": "./filters/example.nim",
-
-  // Optional property that defines the path to the folder with the *.nimble file
   "requirements": "./filters"
 }
 ```
 
+- `runWith` - always set to `nim`, marks this filter as a Nim filter.
+- `script` - path to the `.nim` or `.nims` file that contains the Nim program to run. Regolith compiles the script during `regolith install` even if the extension is `.nims` (Nim script file).
+- `requirements` (optional) - a property that defines the path to the folder with the `.nimble` file. By default, Regolith looks for the `.nimble` file in the same folder as the script.
+
+
 ## Requirements and Dependencies
 
-If your filter has dependencies, put a `.nimble` file in the same directory as your `.nim` file, alternatively
-you can specify different path using the "requirements" property. Regolith will look for the nimble file in
-the folder specified by "requirements" or if it's not defined in the same folder as the script.
-
-Documentation on how to make a `.nimble` file is located [here](https://github.com/nim-lang/nimble#creating-packages).
+The dependencies of a Nim filter are defined in a `.nimble` file. You can read more about the `.nimble` file in the Nim documentation. The Nim filters expect the dependencies to be defined in a `.nimble` file in the same directory as the script file unless specified otherwise in the `requirements` property.

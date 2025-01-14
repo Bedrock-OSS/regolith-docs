@@ -1,7 +1,7 @@
 (java-filters)=
 # Java Filters
 
-Java is a high-level compiled language, that runs inside the Java Virtual Machine.
+Java filters run compiled Java programs (`.jar` files) as filters, using the `java` command.
 
 ## Installing Java
 
@@ -12,18 +12,16 @@ There are many available JDKs to choose from. Few recommended are:
  - [AdoptOpenJDK](https://adoptopenjdk.net/)
  - [LibericaJDK](https://bell-sw.com/pages/downloads/)
 
-## Running Java applications as Filter
+## Java Filter Definition
 
-The syntax for running a java jar is this:
+The the structure of the Java filter definition is described below. You can read how to use it in the {ref}`Filter Definition<filter-definition>` section.
 
 ```json
 {
   "runWith": "java",
-  "script": "./filters/example.jar"
+  "path": "./filters/example.jar"
 }
 ```
 
-## Dependencies
-
-All dependencies should be bundled into a "fat JAR" as this filter type does not have an automatic dependency fetching.
-
+- `runWith` - always set to `java`, marks this filter as a Java filter.
+- `path` - path to the `.jar` file that contains the compiled Java program to run.
