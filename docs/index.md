@@ -57,12 +57,12 @@ Shell Filters <filters/shell-filters>
 :hidden:
 :caption: Developing Filters
 
+Filter Development Introduction <developing-filters/filter-development-introduction>
 Local Filters <developing-filters/local-filters>
 Filter Definition<developing-filters/filter-definition>
 Online Filters <developing-filters/online-filters>
 Publishing Filters <developing-filters/publishing-filters>
 Custom Filter Resolvers <developing-filters/custom-filter-resolvers>
-Custom Filters <developing-filters/custom-filters>
 Create a Filter <developing-filters/create-a-filter>
 Testing Filters <developing-filters/testing-filters>
 Default Filter Data <developing-filters/default-filter-data>

@@ -3,7 +3,7 @@
 This step-by-step tutorial will guide you through the creation of your first Regolith filter, in the Python programming language. If you're new to Regolith, you may enjoy trying out some of our {ref}`standard filters<standard-library>` first.
 
 ```{warning}
-This page is an in-depth tutorial for Regolith filter creation, including detailed information about data-flow and semantics. If you just want to get started programming, you may consider checking out the documentation on {ref}`custom filters.<custom-filters>`
+This page is an in-depth tutorial for Regolith filter creation, including detailed information about data-flow and semantics. If you just want to get started programming, you may consider checking out the documentation on {ref}`custom filters.<filter-development-introduction>`
 ```
 
 ## Installing Python
