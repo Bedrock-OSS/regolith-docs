@@ -68,18 +68,18 @@ Using profiles is useful when you want to have a multiple similar filters and yo
 
 When the object in the `filters` array continas a `filter` field, it references a filter defined in {ref}`filterDefinitions<filter-definitions>`. It may also contain additional properties defining how to run the filter and under what conditions.
 
-#### filter
+#### filter: string
 Filter is a required filed that references the filter to run. The filter must be defined in the `filterDefinitions` object in the project's `config.json` file.
 
-#### arguments
+#### arguments: list
 Arguments is an optional field that specify the command-line arguments to pass to the filter when it runs. It's an array of strings that are passed as arguments to the filter. Different filters may use this field differently, so you should refer to the filter's documentation for more information.
 
-#### settings
+#### settings: object
 Settings, like arguments, is an optional field that affects the command-line arguments. When it's present, its content is passed to the filter as a JSON string as the first argument. Different filters may use this field differently, so you should refer to the filter's documentation for more information.
 
-#### disabled
+#### disabled: bool
 The optional `disabled` field is added for convenience. You can set it to `true` to disable a filter without removing it from the profile. This can be useful when you want to temporarily disable a filter without losing the configuration.
 
 (project-config-when-property)=
-#### when
+#### when: string
 The optional `when` field is a boolean expression that disables the filter when it's false. The most common use case is to run a filter only on a specific operating system or architecture. You can read more about the syntax and available variables on it's own page {ref}`here<go-simple-eval>`.
