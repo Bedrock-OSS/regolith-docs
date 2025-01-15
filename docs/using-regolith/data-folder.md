@@ -10,7 +10,7 @@ The data folder typically contains subfolders that correspond to the filters ins
 
 Using the same names of the folders that match the names of the filters isn't just a convention. It has some practical implications:
 
-1. Some filters provide default data files that will be copied into the data folder when you {ref}`install<installing-filters>` them for the first time.
+1. Some filters provide {ref}`default data files<online-filters-data-folder>` that will be copied into the data folder when you {ref}`install<installing-filters>` them for the first time.
 2. Some filters {ref}`may register their data folder as editable<filter-property-export-data>`. This means that all changes applied to their data folder during {ref}`running filters<running-filters>` will be saved in the project.
 
 As a user, you don't have to worry about these details too much. The install command will never overwrite filter's data if you already have it, and the majority of the filters doesn't register their data as editable; if they do it is most likely mentioned their documentation.

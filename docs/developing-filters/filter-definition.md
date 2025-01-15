@@ -33,6 +33,6 @@ This snippet shows how to define a local filter named `my_local_filter` that run
 (online-filter-definition)=
 ## Online Filter Definition (filter.json)
 
-The {ref}`online filters<online-filters>` keep their filter definitions in the `filters` property of their filter.json file. The `filters` list in the filter.json is kind of like a mix of `filterDefinitions` and `filters` from config.json. They contain the definition part of the local filter and {ref}`the properties from filters property in config.json<project-config-referencing-filters>`.
+The {ref}`online filters<online-filters>` keep their filter definitions in the `filters` property of their filter.json file. The `filters` list in the filter.json is kind of like a mix of `filterDefinitions` and `filters` from config.json. They contain the definition part of the local filter (with `runWith` proeprty and propertis specific to the filter type) and {ref}`the properties from filters property in config.json<project-config-referencing-filters>`.
 
 Online filters, can't reference other online filters, and they can't reference profiles.

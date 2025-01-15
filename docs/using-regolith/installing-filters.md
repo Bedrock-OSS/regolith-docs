@@ -33,6 +33,9 @@ regolith install name_ninja
 If the filter is not listed on the resolver repository, you need to use the following format:
 `github.com/<user>/<repository>/<folder>`.
 
+Or, if the filter is not hosted on GitHub, more generally:
+`<repository-url>/<folder>`.
+
 For example, to install `name_ninja` using the full format, you would run:
 ```text
 regolith install github.com/Bedrock-OSS/regolith-filters/name_ninja
