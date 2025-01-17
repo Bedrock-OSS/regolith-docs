@@ -19,7 +19,7 @@ Since filters arn not actually editing the project files, you don't need to worr
 
 While modifying files outside of the temporary directory goes against the non-destructive editing philosophy of Regolith, sometimes it's necessary. If your filter needs to access files outside of the temporary directory, Regolith provides some environment variables to help you with that. These are active for every filter run by Regolith:
 
- - `FILTER_DIR` - This environment variable contains an absolute path to the filter directory, inside the {ref}`project cache<project-cache>`. For local filters, this is where the filter script is stored. For online filters, this is the path where the filter.json file is.
  - `ROOT_DIR` - This environemnt variable contains an absolute path to the project root directory, where config.json file is.
+ - `FILTER_DIR` - This environment variable contains an absolute path to the directory where the filter is defined, For online filters, this is a directory with the filter.json file inside the {ref}`project cache<project-cache>`. For local filters, this is the same as the `ROOT_DIR`, because their definition is inside the config.json file.
 
 Be aware that if your filter crashes while editing files outside of the temporary directory, there is no mechanism to revert the changes. Your filter will need to handle this itself.
