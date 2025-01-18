@@ -65,7 +65,6 @@ Publishing Filters <developing-filters/publishing-filters>
 Custom Filter Resolvers <developing-filters/custom-filter-resolvers>
 Testing Filters <developing-filters/testing-filters>
 Create a Filter <developing-filters/create-a-filter>
-Default Filter Data <developing-filters/default-filter-data>
 ```
 
 ```{toctree}
