@@ -7,7 +7,7 @@ Online filters can be installed using the {ref}`regolith install<installing-filt
 
 ## The Structure of an Online Filter Project
 
-To create an online filter, your github project needs to be structured in a certain way. For starters, every filter needs its own folder, at the top of the GitHub project. This folder name is very important, as it will be the name of the filter.
+To create an online filter, your Git project needs to be structured in a certain way. For starters, every filter needs its own folder, at the top of the project. This folder name is very important, as it will be the name of the filter.
 
 Every filter project should have the following structure:
 

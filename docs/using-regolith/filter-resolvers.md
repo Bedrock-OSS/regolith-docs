@@ -15,11 +15,15 @@ And you don't have to remember the full URL of the filter and write commands lik
 ```text
 regolith install github.com/Bedrock-OSS/regolith-filters/name_ninja
 ```
-
+(default-filter-resolver)=
 ## Default Resolver
 By default, Regolith uses the default resolver hosted at [Bedrock-OSS/regolith-filter-resolver](https://github.com/Bedrock-OSS/regolith-filter-resolver) repository in the `resolver.json` file.
 
 Currently, there is no way to remove the default resolver from Regolith, but you can add your own resolvers which will take precedence over the default resolver (see the next section).
+
+```{warning}
+The filters listed on the default resolver are not guaranteed to be safe. There is no review process for the filters and anyone can add anything to the resolver. Use the filters from the default resolver at your own risk.
+```
 
 ## Adding Resolvers to Your User Configuration
 The list of resolvers used by Regolith is stored in the {ref}`user configuration<user-configuration>` file. You can edit it manually or use the `regolith config`.

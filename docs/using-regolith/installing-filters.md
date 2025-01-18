@@ -48,7 +48,8 @@ regolith install name_ninja texture_list
 
 The `install` command also supports installing specific versions of the filters. You can read more about in the {ref}`Filter Versioning<filter-versioning>` page. By default Regolith installs the most recent release of the filter.
 
-## Adding Filter to Profile
+(install-command)=
+## Install Command
 
 After installing, the filter will appear inside `filterDefinitions` of `config.json`. You can now add this filter to a profile like this:
 
@@ -73,7 +74,7 @@ regolith install name_ninja --profile=default
 ```
 This command would append the filter to the filters list of the default profile.
 
-## Install All
+## Install All Command
 
 Regolith is intended to be used with git version control, and by default the {ref}`.regolith<project-cache>` folder is ignored. That means that when you collaborate on a project, or simply re-clone your existing projects, you will need an easy way to download all the filters again!
 
