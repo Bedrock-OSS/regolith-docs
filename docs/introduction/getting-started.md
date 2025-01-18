@@ -95,7 +95,7 @@ It runs the default {ref}`profile<profiles>`. If unmodified, the `default` profi
 
 ## Adding your first Filter
 
-Regolith contains a very powerful filter system, that allows you to write filters in many languages, as well as running existing filters from the internet. For now, we will simply use the {ref}`standard library<standard-library>`, which is a set of filters maintained by creators of Regolith - Bedrock-OSS.
+Regolith contains a very powerful filter system, that allows you to write filters in many languages, as well as running existing filters from the internet. For now, we will simply use the [standard library](https://github.com/Bedrock-OSS/regolith-filter-resolver?tab=readme-ov-file#standard-filters), which is a set of filters maintained by creators of Regolith - Bedrock-OSS.
 
 As an example, we will use the `texture_list` filter, which automatically creates the `textures_list.json` file for you. To learn more about this file, and why automating it is helpful, read [here](https://wiki.bedrock.dev/concepts/textures-list.html).
 

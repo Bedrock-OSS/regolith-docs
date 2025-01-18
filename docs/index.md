@@ -74,15 +74,6 @@ Create Local Filter<tutorials/create-local-filter>
 Create Online Filter<tutorials/create-online-filter>
 ```
 
-
-```{toctree}
-:hidden:
-:caption: Libraries
-
-Standard Library <libraries/standard-library>
-Community Filters <libraries/community-filters>
-```
-
 # Regolith
 Regolith is a tool that helps with creation of Resource Pack & Behavior Pack for Minecraft Bedrock Edition.
 
@@ -92,3 +83,5 @@ Regolith is a tool that helps with creation of Resource Pack & Behavior Pack for
 
 
 If you're looking for Regolith repository, you can find it here: [https://github.com/Bedrock-OSS/regolith/](https://github.com/Bedrock-OSS/regolith/)
+
+If you want to contact the developers, you can join the [Discord server](https://discord.gg/UQ82Qrean7).
