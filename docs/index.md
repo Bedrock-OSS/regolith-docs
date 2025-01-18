@@ -64,8 +64,16 @@ Online Filters <developing-filters/online-filters>
 Publishing Filters <developing-filters/publishing-filters>
 Custom Filter Resolvers <developing-filters/custom-filter-resolvers>
 Testing Filters <developing-filters/testing-filters>
-Create a Filter <developing-filters/create-a-filter>
 ```
+
+```{toctree}
+:hidden:
+:caption: Tutorials
+
+Create Local Filter<tutorials/create-local-filter>
+Create Online Filter<tutorials/create-online-filter>
+```
+
 
 ```{toctree}
 :hidden:

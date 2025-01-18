@@ -5,6 +5,8 @@ Online filters are filters that are hosted on online Git repositories, typically
 
 Online filters can be installed using the {ref}`regolith install<installing-filters>` command.
 
+If you wnat to learn by example, you can check out the {ref}`Create Online Filter Tutorial<create-online-filter-tutorial>`. It gives you a quick step-by-step guide but doesn't go into the details of the filter development that you can find here.
+
 ## The Structure of an Online Filter Project
 
 To create an online filter, your Git project needs to be structured in a certain way. For starters, every filter needs its own folder, at the top of the project. This folder name is very important, as it will be the name of the filter.
