@@ -63,8 +63,8 @@ Filter Definition<developing-filters/filter-definition>
 Online Filters <developing-filters/online-filters>
 Publishing Filters <developing-filters/publishing-filters>
 Custom Filter Resolvers <developing-filters/custom-filter-resolvers>
-Create a Filter <developing-filters/create-a-filter>
 Testing Filters <developing-filters/testing-filters>
+Create a Filter <developing-filters/create-a-filter>
 Default Filter Data <developing-filters/default-filter-data>
 ```
 
