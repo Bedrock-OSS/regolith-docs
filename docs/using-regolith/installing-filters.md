@@ -14,7 +14,8 @@ Filters are written in [programming languages](https://www.wikiwand.com/en/Progr
 
 For example, if the filter relies on Python, you can find installation instructions {ref}`here<python-filters>`.
 
-## Installing a Filter
+(install-command)=
+## Install Command
 
 ```{warning}
 The `install` command relies on `git`. You can read more about Git {ref}`here<git-dependency>`.
@@ -48,8 +49,7 @@ regolith install name_ninja texture_list
 
 The `install` command also supports installing specific versions of the filters. You can read more about in the {ref}`Filter Versioning<filter-versioning>` page. By default Regolith installs the most recent release of the filter.
 
-(install-command)=
-## Install Command
+## Adding Filter to Profile
 
 After installing, the filter will appear inside `filterDefinitions` of `config.json`. You can now add this filter to a profile like this:
 
