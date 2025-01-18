@@ -12,7 +12,7 @@ To create an online filter, your github project needs to be structured in a cert
 Every filter project should have the following structure:
 
 ```text
-📂 root
+📂 <root>
   📂 <filter-name>
     📂 data
     📂 test
@@ -22,7 +22,7 @@ Every filter project should have the following structure:
   📄 <other-project-files>
 ```
 
-- `root` - The root of the repository. The filters must be in direct subfolders of the root.
+- `<root>` - The root of the repository. The filters must be in direct subfolders of the root.
 - `<filter-name>` - The main folder of the filter. Its name will determine the name of the filter.
 - `data` - A data folder of the filter (explained later).
 - `test` - A test folder of the filter (explained later).
