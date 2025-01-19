@@ -7,41 +7,54 @@ Regolith is a useful tool, but its somewhat complex compilation flow leaves room
 
 ### Reading the Console
 
-Regolith is a console application, which means that you will need to interact with it via the terminal. When Regolith runs, it will print information into the same log. This information is very useful in debugging, as Regolith will print as much useful information as it can during failure states.
+Regolith runs in a terminal, providing valuable output during its execution. If something goes wrong, the console logs will often contain warnings, errors, or other helpful details about the issue.
 
-Please get comfortable reading the console output, and try to become familiar with the syntax. Warnings and errors will be printed clearly.
+Familiarize yourself with the console output and look for keywords like "warning" or "error" to identify problems. Reading the log carefully is often the first step in diagnosing an issue.
 
-### Check your Version
+### Checking Your Version
 
 Regolith is a living, breathing application, which is receiving numerous updates. You can directly install the latest version of Regolith, or watch out for the "A new Version is Available" messages in the console output.
 
 ## Common Issues
 
-### Regolith is not Recognized
+### Regolith Command Not Recognized
 
-When first installing Regolith, you may get an error message like this:
+If you see an error like this when trying to run Regolith:
 
-```
-regolith : The term 'regolith' is not recognized as the name of a cmdlet, function, script file, or operable program. 
+```text
+regolith : The term 'regolith' is not recognized as the name of a cmdlet, function, script file,
+or operable program.
 
-Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Check the spelling of the name, or if a path was included, verify that the path is correct and
+try again.
 ```
 
 The most common cause of this issue is incorrect installation. Here are some troubleshooting tips:
 
- - 1: First, try closing your shell, and opening a new one. Then rerun the `regolith` command.
- - 2: Try a different shell. For example `gitbash` or `vscode` instead of `powershell`.
- - 3: Try reinstalling Regolith
- - 4: If you cannot get Regolith installed, you may download the stand-alone .exe, and place this in your project
+1. **Restart Your Terminal:** Close the terminal or shell you're using and reopen it. Then try running the `regolith` command again.
+2. **Switch Terminals:** Try a different shell. For example `gitbash` or `vscode` instead of `powershell`.
+3. **Try reinstalling Regolith.**
+4. **Use the Stand-Alone Executable:** If you cannot get Regolith installed, you may download the stand-alone executable, and place it in your project
 
-### Crash when Running
+### Crash When Running
 
-The most common reason Regolith will crash is from a broken filter. The first step in debugging, is identifying which filter is failing. You can do so by navigating to the Regolith output log, and finding which filter caused the crash. 
+The most common reason Regolith will crash is from a broken filter. The first step in debugging, is identifying which filter is failing. You can do so by navigating to the Regolith output log, and finding which filter caused the crash.
 
 Filter errors will be printed like `[error][filter] ... `.
 
-### Python Not Found
+Where `filter` will be replaced with the name of the filter that had an error.
 
-If you get a message like `[+]: Python not found, download and install it from https://www.python.org/downloads/`, this means that Python either not installed, or is not available on the path. 
+### Dependency Not Found
 
-We provide {ref}`installation instructions<python-filters>`, to help you get Python installed correctly on your system. Please be aware that Python installed via the Microsoft Store will not work with Regolith, as it generally doesn't add itself to path.
+If Regolith cannot find a required dependency, you'll see an error like:
+
+
+```text
+[+] ... not found, download and install it from ...
+```
+
+This means the filter you're trying to use depends on a runtime or library that is missing from your system.
+
+Example errors:
+- Python `[+]: Python not found, download and install it from https://www.python.org/downloads/`
+- NodeJS `[+]: NodeJS not found, download and install it from https://nodejs.org/en/`

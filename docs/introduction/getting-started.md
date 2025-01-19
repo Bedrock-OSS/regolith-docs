@@ -1,112 +1,124 @@
+(getting-started)=
 # Getting Started
 
-```{note}
-To get started with Regolith, you should first read our {ref}`introduction<what-is-regolith>` page, and the {ref}`installation<installing>` page.
-```
-
-You can test for installation by running `regolith` inside of a terminal. This guide will assume you have installed regolith directly, but you can follow along with a stand-alone build. Just ensure that the executable is placed inside of your project folder.
-
-If you run into issues installing, you can check our {ref}`troubleshooting guide<troubleshooting>` for tips.
-
 ```{warning}
-Regolith is a command line application. It assumes some familiarity with how to navigate and use the command line. You can get a refresher [here](https://tutorial.djangogirls.org/en/intro_to_command_line/).
+Regolith is a command-line application. It assumes you have some familiarity with navigating and using the command line. If you need a refresher, check out [this tutorial](https://tutorial.djangogirls.org/en/intro_to_command_line/).
 ```
 
-## Creating a new Project
+This tutorial will guide you through the basic usage of Regolith. It assumes that you've already installed Regolith. If not, please refer to the {ref}`installation<installation>` page.
 
-To create a new project, navigate to a blank folder, and run `regolith init`. This will create a few files:
+By the end of this tutorial, you'll learn how to add and run a filter from the internet in your project. Installing filters requires Git, and the example filter runs in Python. If you want to follow along, ensure you have these dependencies installed. For Git installation instructions, see the {ref}`Additional Dependencies<additional-dependencies>` section. For Python installation instructions, refer to the {ref}`Python Filters<python-filters>` section.
 
-![](./getting-started/project-folder.png)
+## Creating a New Project
+
+To create a new project, navigate to an empty folder and run:
+```text
+regolith init
+```
+
+This will create a few files:
+```text
+📂 example-project
+    📂 .regolith
+    📂 packs
+        📂 BP
+        📂 data
+        📂 RP
+    📄 .gitignore
+    📄 config.json
+```
 
 In short:
- - `.regolith` is a special folder that regolith uses to store data. You don't need to look here.
- - `packs/BP` stores your behavior pack.
- - `packs/RP` stores your resource pack.
- - `packs/data` is a special folder that filters can use to store data.
- - `config.json` is the configuration file for Regolith.
- - `.gitignore` is a file which tells [Git source control](https://git-scm.com/)
-   to ignore certain files. It's not a partof of Regolith but we highly
-   recommend using Git to manage your projects.
+- `.regolith`: A special folder Regolith uses to store its data. You typically don't need to access this.
+- `packs/BP`: The folder for your behavior pack.
+- `packs/RP`: The folder for your resource pack.
+- `packs/data`: A special folder filters can use to store additional data.
+- `config.json`: Regolith's configuration file.
+- `.gitignore`: A file that tells {ref}`Git<git-dependency>` to ignore specific files. While not part of Regolith itself, using Git to manage your projects is highly recommended.
 
-## Config file
+## Basic Project Configuration
 
 Next, open up `config.json`. We will be configuring a few fields here, for your addon.
 
 ```json
 {
-  "name": "Project name", // Enter your pack name here. (Example: spooky_gravestones)
-  "author": "Your name",  // Enter your author name here. (example: SirLich)
+  "author": "Your name", // Replace with your name (e.g., Bedrock-OSS)
+  "name": "Project name", // Replace with your project name (e.g., spooky_gravestones)
   "packs": {
     "behaviorPack": "./packs/BP",
     "resourcePack": "./packs/RP"
   },
   "regolith": {
+    "dataPath": "./packs/data",
+    "filterDefinitions": {},
+    "formatVersion": "1.4.0",
     "profiles": {
       "default": {
-        "filters": [],
         "export": {
-          "target": "development",
           "build": "standard",
-          "readOnly": false
-        }
+          "readOnly": false,
+          "target": "development"
+        },
+        "filters": []
       }
-    },
-    "filterDefinitions": {},
-    "dataPath": "./packs/data"
+    }
   }
 }
 ```
 
-Later on you can play with the additional configuration options, but for now, just set a project name, and author name.
+Later on you can play with the additional configuration options, but for now, just set a project name, and author name (marked in the snipped above with comments).
+
+Setting the name of the project is important, because Regolith often uses it to generate the names of the exported folders, for example, resource pack and behavior pack folders in the {ref}`"development" export target<export-targets>` by default use the project name as a prefix.
 
 ```{note}
-We suggest using a name like `dragons` or `cars` for the project name, as opposed to `My Dragon Adventure Map`, since the project name will be used as the folder name for the final export if you're
-using the {ref}`"development" export target<export-targets>`.
+For more details about the `config.json` file, refer to the {ref}`Configuration File<project-config-file>` section.
 ```
 
-## Creating your Addon
 
-At this point, you will want to add some files into your regolith project. If you have an existing project, you can copy/paste the files into the `RP` (resource pack) and `BP` (behavior pack) folders. 
+## Adding Pack Files
 
-If you don't have an addon prepared, you may also create a fresh one directly in your project folder, following the normal rules. Add a `manifest.json`, a `pack_icon.png`, and any other files you want. The files should go directly into the `RP` and `BP` folders, like this:
+At this stage, you'll want to populate your Regolith project with files.
 
-![](./getting-started/project-folder-2.png)
+If you have an existing addon, copy and paste your files into the `RP` (resource pack) and `BP` (behavior pack) folders within your project directory.
+
+If you don't have an addon prepared, you can use files from the [example project prepared for this tutorial](https://github.com/Bedrock-OSS/regolith-docs-tutorial-resources/releases/tag/1.4.1-getting-started).
+
+1. Download the `RP.zip` and `BP.zip` files from the link above.
+2. Extract the contents of `RP.zip` into the `RP` folder.
+3. Extract the contents of `BP.zip` into the `BP` folder.
+
+Alternatively, you can download the complete, final version of the project as `getting-started-full-project.zip`.
+
+```{note}
+Regolith supports projects that focus solely on resource packs or behavior packs. If your project doesn't have one of these, you can remove the corresponding field (`behaviorPack` or `resourcePack`) from the `config.json` file and delete the unused `RP` or `BP` folder.
+```
 
 ## Running Regolith
 
-There are two ways of running Regolith profiles `regolith run` and `regolith watch`.
-They both run a profile defined in `config.json` file.
+To run Regolith, use the following command:
+```text
+regolith run
+```
+By default, this runs the `default` {ref}`profile<profiles>`, which (if unmodified) is configured to export files into the `development` target. This means your packs will be copied into the `development_behavior_packs` and `development_resource_packs` folders within the [com.mojang folder](https://wiki.bedrock.dev/guide/project-setup.html#the-com-mojang-folder).
 
-The `regolith run [profile-name]` command runs provided profile once. If you don't
-specify a profile, it will run the profile named "default".
+## Adding Your First Filter
 
-The `regolith watch [profile-name]` command works the same as `regolith run`, but
-it will watch your source files and rerun the profile when they change. If you're
-using `regolith run` you have to do it manually every time.
+Regolith features a powerful filter system that supports writing custom filters in various programming languages and running pre-existing filters from the internet. For now, we'll use the [Standard Filters Library](https://github.com/Bedrock-OSS/regolith-filter-resolver?tab=readme-ov-file#standard-filters), a collection of filters maintained by the creators of Regolith, Bedrock-OSS.
 
-By default the export is set to "development", which means that the files will
-be copied to the `development_behavior_packs` and `development_resource_packs`
-folders of `com.mojang`. The names of folders created in this export mode are
-based on the name of the project like `project_name_bp` and `project_name_rp`.
+As an example, we will use the `texture_list` filter, which automatically creates the `textures_list.json` file for you. To learn more about this file, and why automating it is helpful, read [here](https://wiki.bedrock.dev/concepts/textures-list.html).
 
-## Adding your first Filter
+To install the `texture_list` filter, run the following command:
+```text
+regolith install texture_list --profile=default
+```
+This command installs the filter and appends it to the "default" profile in your `config.json` file.
 
-Regolith contains a very powerful filter system, that allows you to write filters in many languages, as well as running existing filters from the internet. For now, we will simply use the {ref}`standard library<standard-library>`, which is a set of approved filters that we maintain. 
-
-As an example, we will use the `texture_list` filter, which automatically creates the `texture_list.json` file for you. To learn more about this file, and why automating it is helpful, read [here](https://wiki.bedrock.dev/concepts/texture-list.html).
-
-### Installing
-
-```{warning}
-The `install` command relies on `git`. You may download git [here](https://git-scm.com/download/win).
+If you prefer, you can install the filter without assigning it to a profile immediately:
+```text
+regolith install texture_list
 ```
 
-You can install this filter by running `regolith install texture_list`, which will make the filter available for use. 
-
-The last step is selecting where/when the filter will run. In our case, we want to run the filter every time we export using the default `default` profile.
-
-You should adjust the default profile in `config.json` to look like this:
-
+Then, manually update the `default` profile in the `config.json` file to include the filter:
 ```json
 "default": {
   "export": {
@@ -122,24 +134,8 @@ You should adjust the default profile in `config.json` to look like this:
 }
 ```
 
-### Running
-
-Now, you can re-run `regolith run`.
-
-Check `com.mojang`, and open the new `texture_list.json` file in `RP/textures/texture_list.json`. Every time you run regolith, this file will be re-created, based on your current textures. No need to manually edit it ever again!
+Now, you can re-run `regolith run`. This time, in addition to copying your packs into the `development` folders in the `com.mojang` folder, Regolith will also generate the `textures_list.json` file in your resource pack. Each time you run Regolith, this file will be re-created based on your current textures. You'll never need to manually edit it again!
 
 ```{warning}
-If your resource pack already contains `texture_list.json`, you should delete it. You don't need to manually worry about it anymore - Regolith will handle it!
+If your project doesn't contain any textures, the `texture_list.json` file will be generated as an empty file (`[]`). Add some textures to your project to see the filter in action!
 ```
-
-```{warning}
-If your project doesn't have any textures, than `texture_list.json` will simply create a blank file `[]`. Consider adding some textures to see the filter at work!
-```
-
-## Whats Next
-
-Now that you've created your first Regolith project, and installed your first filters, you are well on your way to being a Regolith expert! You should check out the {ref}`standard library<standard-library>`, to see if additional filters might be useful for you.
-
-Otherwise, you can learn about writing {ref}`custom filters<custom-filters>` or
-dive deeper into Regolith commands by reading about {ref}`Filter Run Modes<filter-run-modes>`
-and {ref}`Installing and Updating Filters<installing-filters>`.

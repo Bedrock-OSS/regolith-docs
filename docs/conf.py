@@ -9,7 +9,7 @@
 project = 'Regolith'
 copyright = '2024, Bedrock-OSS'
 author = 'Bedrock-OSS'
-release = '1.4.1'
+release = '1.4.0'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

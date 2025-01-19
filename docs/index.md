@@ -2,67 +2,87 @@
 :hidden:
 :caption: Introduction
 
-What Is Regolith? <introduction/what-is-regolith>
-Installing <introduction/installing>
+Introduction <introduction/introduction>
+Installation <introduction/installation>
+Additional Dependencies <introduction/additional-dependencies>
 Getting Started <introduction/getting-started>
 Troubleshooting <introduction/troubleshooting>
+Safety <introduction/safety>
 ```
 
 ```{toctree}
 :hidden:
-:caption: Advanced
+:caption: Project Configuration
 
-Configuration File <advanced/configuration>
-User Configuration <advanced/user-configuration>
-Data Folder <advanced/data-folder>
-Export Targets <advanced/export-targets>
-Profiles <advanced/profiles>
-Experiments <advanced/experiments>
-Safety <advanced/safety>
+Project Config File <project-configuration/project-config-file>
+Format Versions <project-configuration/format-versions>
+Profiles <project-configuration/profiles>
+Export Targets <project-configuration/export-targets>
+Go-Simple-Eval <project-configuration/go-simple-eval>
+```
+
+```{toctree}
+:hidden:
+:caption: Using Regolith
+
+Help & Autocompletion <using-regolith/help-and-autocompletion>
+Installing Filters <using-regolith/installing-filters>
+Filter Versioning <using-regolith/filter-versioning>
+Updating Filters <using-regolith/updating-filters>
+Filter Resolvers <using-regolith/filter-resolvers>
+Running Filters <using-regolith/running-filters>
+Regolith Cache <using-regolith/regolith-cache>
+User Configuration <using-regolith/user-configuration>
+Experiments <using-regolith/experiments>
+Data Folder <using-regolith/data-folder>
+
 ```
 
 ```{toctree}
 :hidden:
 :caption: Filters
 
-Introduction <filters/filters>
-Local Filters <filters/local-filters>
-Custom Filters <filters/custom-filters>
-Online Filters <filters/online-filters>
-Installing Filters <filters/installing-filters>
-Filter Run Modes <filters/filter-run-modes>
-Create a Filter <filters/create-a-filter>
+Filters Introduction <filters/filter-introduction>
+.NET Filters <filters/dotnet-filters>
+Deno Filters <filters/deno-filters>
+Executable Filters <filters/executable-filters>
+Java Filters <filters/java-filters>
+Nim Filters <filters/nim-filters>
+NodeJS Filters <filters/node-filters>
+Python Filters <filters/python-filters>
+Shell Filters <filters/shell-filters>
 ```
 
 ```{toctree}
 :hidden:
-:caption: Filter Types
+:caption: Developing Filters
 
-Java Filters <filter-types/java-filters>
-.NET Filters <filter-types/dotnet-filters>
-Nim Filters <filter-types/nim-filters>
-Python Filters <filter-types/python-filters>
-Shell Filters <filter-types/shell-filters>
-NodeJS Filters <filter-types/node-filters>
-Deno Filters <filter-types/deno-filters>
-Profile Filters <filter-types/profile-filters>
-Executable Filters <filter-types/executable-filters>
+Filter Development Introduction <developing-filters/filter-development-introduction>
+Local Filters <developing-filters/local-filters>
+Filter Definition<developing-filters/filter-definition>
+Online Filters <developing-filters/online-filters>
+Publishing Filters <developing-filters/publishing-filters>
+Custom Filter Resolvers <developing-filters/custom-filter-resolvers>
+Testing Filters <developing-filters/testing-filters>
 ```
 
 ```{toctree}
 :hidden:
-:caption: Libraries
+:caption: Tutorials
 
-Standard Library <libraries/standard-library>
-Community Filters <libraries/community-filters>
+Create Local Filter<tutorials/create-local-filter>
+Create Online Filter<tutorials/create-online-filter>
 ```
 
 # Regolith
-Regolith is a tool that helps with creation of Resource Pack & Behavior Pack for Minecraft Bedrock Edition.
+Regolith is a powerful tool for creating Resource Packs and Behavior Packs for Minecraft Bedrock Edition.
 
-- ⚡️ **Blazingly Fast** - Regolith can improve your productivity by automating away boring or repetitive tasks.
-- 🧩 **Flexible** - Regolith is designed with a language-agnostic, tool-agnostic feature set. The flexibility of Regolith allows you to bring all scripts and tools under a single, unified workflow.
-- 🏷️ **Version Control Friendly** - Regolith keeps the ‘source of truth’ out of your com.mojang folder, allowing for seamless git integration.
+- ⚡️ **Blazingly Fast**: Regolith can improve your productivity by automating away boring or repetitive tasks.
+- 🧩 **Flexible**: Regolith is designed with a language-agnostic and tool-agnostic feature set. The flexibility of Regolith allows you to bring all scripts and tools into a unified workflow.
+- 🏷️ **Version Control Friendly**: Regolith keeps your "source of truth" separate from the `com.mojang` folder, ensuring effortless Git integration.
 
 
-If you're looking for Regolith repository, you can find it here: [https://github.com/Bedrock-OSS/regolith/](https://github.com/Bedrock-OSS/regolith/)
+Looking for the Regolith repository? Find it here: [GitHub Repository](https://github.com/Bedrock-OSS/regolith/).
+
+Need to reach the developers? Join the community on [Discord](https://discord.gg/UQ82Qrean7).
+
