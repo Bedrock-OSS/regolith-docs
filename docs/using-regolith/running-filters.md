@@ -1,16 +1,13 @@
 (running-filters)=
 # Running Filters
 
-There are 3 ways of running Regolith:
+There are three ways to run Regolith:
 - `regolith run`
 - `regolith watch`
 - `regolith apply-filter`
 
 ## Run and Watch Commands
-
-Regolith `run` and `watch` are very similar to each other. They run a profile. The difference is that the `watch` command will watch for changes in the RP, BP and {ref}`data<data-folder>` folders and rerun the profile when they change. The `run` command will run the profile only once.
-
-The syntax for run and watch command is:
+The `run` and `watch` commands are quite similar. Both execute a profile, but there is a key difference: the `watch` command monitors changes in the RP, BP, and {ref}`data<data-folder>` folders, automatically rerunning the profile when changes are detected. In contrast, the `run` command executes the profile only once.The syntax for the `run` and `watch` commands is as follows:
 
 ```text
 regolith run [profile-name]
@@ -20,27 +17,25 @@ regolith run [profile-name]
 regolith watch [profile-name]
 ```
 
-Where `[profile-name]` is the name of the profile defined your {ref}`config.json<project-config-file>` file you want to run. The `[profile-name]` is optional. If you don't specify it, the `default` profile will be run.
+Here, `[profile-name]` refers to the name of the profile defined in your {ref}`config.json<project-config-file>` file that you wish to run. If you don't specify a profile name, the `default` profile will be used.
 
 A single run performs the following steps:
 1. Copy your source files into a temporary folder.
-2. Run all of the filters of the profile.
-3. Move the files to the target location defined in the "export" property of the profile.
+2. Run all of the filters specified in the profile.
+3. Move the processed files to the target location defined in the profile's "export" property.
 
-Filters work on the copies of RP, BP, and data. Thanks to the use of copies RP, BP and data are not modified making the run and watch non-destructive.
+Filters work on copies of the RP, BP, and data folders, ensuring that the original files remain untouched. This non-destructive behavior is preserved when using both the `run` and `watch` commands.
 
 ```{warning}
-Some of the filters may modify the data folder if the choose to opt-in for this feature. You can read more about this feature {ref}`here<filter-property-export-data>`. This feature is useful for the filters that need to store some data between runs.
+Some filters may modify the data folder if they opt into this feature. You can read more about this feature {ref}`here<filter-property-export-data>`. This functionality is useful for filters that need to store data between runs.
 ```
 
 ## Apply-Filter Command
+While `regolith run` and `regolith watch` are safe operations (as they generally don't modify project files), the `regolith apply-filter` command permanently applies the results of running a filter to your project.
 
-Running Regolith with `regolith run` or `regolith watch` is a safe operation because they generally don't modify the files of the project.
+You can use the command as follows:
 
-If you want to apply the results of running a filter permanently to you project, you can use the `regolith apply-filter` command.
-
-The command is used like this:
 ```text
 regolith apply-filter <filter-name> [args...]
 ```
-The `filter-name` is the name of one of the filters installed in your project. The `args` is a list of arguments passed to the filter.
+Here, `<filter-name>` refers to the name of the filter you want to apply, and `[args...]` are any arguments you wish to pass to the filter.

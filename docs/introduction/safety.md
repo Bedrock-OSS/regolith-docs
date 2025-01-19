@@ -3,7 +3,7 @@
 
 Please be aware that Regolith is only intended to be used by users experienced with working inside command prompt. Due to the extreme power and flexibility that Regolith offers, there is an increased chance of harm to your system, if used improperly. We cannot accept any liability. You are fully responsible for the safety of your system.
 
-## Why is Regolith Unsafe?
+## Why Is Regolith Potentially Unsafe?
 
 Regolith has the ability to run arbitrary code. This code is not sandboxed, and could damage your system. When writing your own filters, you are responsible to write safe code!
 
@@ -11,7 +11,7 @@ Regolith also comes with the ability to download third-party filters from the in
 
 A compromised filter is able to completely destroy your system.
 
-## Why isn't Regolith Sandboxed?
+## Why Isn't Regolith Sandboxed?
 
 Software sandboxing is extremely difficult, especially since Regolith offers run targets in multiple languages, as well as a native shell integration.
 

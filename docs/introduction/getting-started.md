@@ -2,22 +2,21 @@
 # Getting Started
 
 ```{warning}
-Regolith is a command line application. It assumes some familiarity with how to navigate and use the command line. You can get a refresher [here](https://tutorial.djangogirls.org/en/intro_to_command_line/).
+Regolith is a command-line application. It assumes you have some familiarity with navigating and using the command line. If you need a refresher, check out [this tutorial](https://tutorial.djangogirls.org/en/intro_to_command_line/).
 ```
 
-This tutorial will guide you through basic usage of Regolith. It assumes that you've already installed Regolith. If you haven't, please refer to the {ref}`installation<installation>` page.
+This tutorial will guide you through the basic usage of Regolith. It assumes that you've already installed Regolith. If not, please refer to the {ref}`installation<installation>` page.
 
-At the end of the tutorial, it is shown how to add filter from the internet into your project and run it. Installing filters requires Git, and the filter used as an example runs in Python. If you want to follow allong, you will need get these dependencies. To learn more about getting Git please refer to the {ref}`Additional Dependencies<additional-dependencies>` section. To get the instructions for installing Python, please refer to the {ref}`Python Filters<python-filters>` section.
+By the end of this tutorial, you'll learn how to add and run a filter from the internet in your project. Installing filters requires Git, and the example filter runs in Python. If you want to follow along, ensure you have these dependencies installed. For Git installation instructions, see the {ref}`Additional Dependencies<additional-dependencies>` section. For Python installation instructions, refer to the {ref}`Python Filters<python-filters>` section.
 
-## Creating a new Project
+## Creating a New Project
 
-To create a new project, navigate to a blank folder, and run the following command:
+To create a new project, navigate to an empty folder and run:
 ```text
 regolith init
 ```
 
 This will create a few files:
-
 ```text
 📂 example-project
     📂 .regolith
@@ -30,12 +29,12 @@ This will create a few files:
 ```
 
 In short:
- - `.regolith` is a special folder that Regolith uses to store data. You don't need to look here.
- - `packs/BP` stores your behavior pack.
- - `packs/RP` stores your resource pack.
- - `packs/data` is a special folder that filters can use to store data.
- - `config.json` is the configuration file for Regolith.
- - `.gitignore` is a file which tells {ref}`Git source control<git-dependency>` to ignore certain files. It's not a part of of Regolith but we highly recommend using Git to manage your projects.
+- `.regolith`: A special folder Regolith uses to store its data. You typically don't need to access this.
+- `packs/BP`: The folder for your behavior pack.
+- `packs/RP`: The folder for your resource pack.
+- `packs/data`: A special folder filters can use to store additional data.
+- `config.json`: Regolith's configuration file.
+- `.gitignore`: A file that tells {ref}`Git<git-dependency>` to ignore specific files. While not part of Regolith itself, using Git to manage your projects is highly recommended.
 
 ## Basic Project Configuration
 
@@ -43,8 +42,8 @@ Next, open up `config.json`. We will be configuring a few fields here, for your 
 
 ```json
 {
-  "author": "Your name", // Enter your pack name here. (Example: spooky_gravestones)
-  "name": "Project name", // Enter your author name here. (example: Bedrock-OSS)
+  "author": "Your name", // Replace with your name (e.g., Bedrock-OSS)
+  "name": "Project name", // Replace with your project name (e.g., spooky_gravestones)
   "packs": {
     "behaviorPack": "./packs/BP",
     "resourcePack": "./packs/RP"
@@ -72,40 +71,54 @@ Later on you can play with the additional configuration options, but for now, ju
 Setting the name of the project is important, because Regolith often uses it to generate the names of the exported folders, for example, resource pack and behavior pack folders in the {ref}`"development" export target<export-targets>` by default use the project name as a prefix.
 
 ```{note}
-You can read more about the `config.json` file in the {ref}`Configuration File<project-config-file>` section.
+For more details about the `config.json` file, refer to the {ref}`Configuration File<project-config-file>` section.
 ```
+
 
 ## Adding Pack Files
 
-At this point, you will want to add some files into your Regolith project. If you have an existing project, you can copy/paste the files into the `RP` (resource pack) and `BP` (behavior pack) folders. 
+At this stage, you'll want to populate your Regolith project with files.
 
-If you don't have an addon prepared, you may use files from the [example project prepared for this tutorial](https://github.com/Bedrock-OSS/regolith-docs-tutorial-resources/releases/tag/1.4.1-getting-started). You can copy the into the content of `RP.zip` and `BP.zip` into the `RP` and `BP` folders respectively or you can get the full (final) version of the project from the `getting-started-full-project.zip` file.
+If you have an existing addon, copy and paste your files into the `RP` (resource pack) and `BP` (behavior pack) folders within your project directory.
+
+If you don't have an addon prepared, you can use files from the [example project prepared for this tutorial](https://github.com/Bedrock-OSS/regolith-docs-tutorial-resources/releases/tag/1.4.1-getting-started).
+
+1. Download the `RP.zip` and `BP.zip` files from the link above.
+2. Extract the contents of `RP.zip` into the `RP` folder.
+3. Extract the contents of `BP.zip` into the `BP` folder.
+
+Alternatively, you can download the complete, final version of the project as `getting-started-full-project.zip`.
 
 ```{note}
-Regolith supports creating purely resource-pack- or behavior-pack-oriented projects. If your project doesn't have a resource pack or behavior pack, you can simply remove the appropriate field from the `config.json` file, and remove the `RP` or `BP` folder.
+Regolith supports projects that focus solely on resource packs or behavior packs. If your project doesn't have one of these, you can remove the corresponding field (`behaviorPack` or `resourcePack`) from the `config.json` file and delete the unused `RP` or `BP` folder.
 ```
 
 ## Running Regolith
 
-You can run regolith using the following command:
-```
+To run Regolith, use the following command:
+```text
 regolith run
 ```
-It runs the default {ref}`profile<profiles>`. If unmodified, the `default` profile is set to export files into the `development` target. This means it copies the packs into the `development_behavior_packs` and `development_resource_packs` inside the [com.mojang folder](https://wiki.bedrock.dev/guide/project-setup.html#the-com-mojang-folder).
+By default, this runs the `default` {ref}`profile<profiles>`, which (if unmodified) is configured to export files into the `development` target. This means your packs will be copied into the `development_behavior_packs` and `development_resource_packs` folders within the [com.mojang folder](https://wiki.bedrock.dev/guide/project-setup.html#the-com-mojang-folder).
 
-## Adding your first Filter
+## Adding Your First Filter
 
-Regolith contains a very powerful filter system, that allows you to write filters in many languages, as well as running existing filters from the internet. For now, we will simply use the [standard library](https://github.com/Bedrock-OSS/regolith-filter-resolver?tab=readme-ov-file#standard-filters), which is a set of filters maintained by creators of Regolith - Bedrock-OSS.
+Regolith features a powerful filter system that supports writing custom filters in various programming languages and running pre-existing filters from the internet. For now, we'll use the [Standard Filters Library](https://github.com/Bedrock-OSS/regolith-filter-resolver?tab=readme-ov-file#standard-filters), a collection of filters maintained by the creators of Regolith, Bedrock-OSS.
 
 As an example, we will use the `texture_list` filter, which automatically creates the `textures_list.json` file for you. To learn more about this file, and why automating it is helpful, read [here](https://wiki.bedrock.dev/concepts/textures-list.html).
 
-You can install this filter by running the following command:
+To install the `texture_list` filter, run the following command:
 ```text
 regolith install texture_list --profile=default
-``` 
-This command adds the filter to your project, and appends it to the "default" profile.
+```
+This command installs the filter and appends it to the "default" profile in your `config.json` file.
 
-Alternatively, you can just run `regolith install texture_list`, and manually add the filter to the profile in the `config.json` file. The "default" profile in the config file should look like this:
+If you prefer, you can install the filter without assigning it to a profile immediately:
+```text
+regolith install texture_list
+```
+
+Then, manually update the `default` profile in the `config.json` file to include the filter:
 ```json
 "default": {
   "export": {
@@ -120,8 +133,9 @@ Alternatively, you can just run `regolith install texture_list`, and manually ad
   ]
 }
 ```
-Now, you can re-run `regolith run`. This time, Regolith will not only copy your packs into the development folders in `com.mojang` folder, but also create the `textures_list.json` file for you in your resource pack. Every time you run Regolith, this file will be re-created, based on your current textures. No need to manually edit it ever again!
+
+Now, you can re-run `regolith run`. This time, in addition to copying your packs into the `development` folders in the `com.mojang` folder, Regolith will also generate the `textures_list.json` file in your resource pack. Each time you run Regolith, this file will be re-created based on your current textures. You'll never need to manually edit it again!
 
 ```{warning}
-If your project doesn't have any textures, than `texture_list.json` will simply create a blank file `[]`. Consider adding some textures to see the filter at work!
+If your project doesn't contain any textures, the `texture_list.json` file will be generated as an empty file (`[]`). Add some textures to your project to see the filter in action!
 ```

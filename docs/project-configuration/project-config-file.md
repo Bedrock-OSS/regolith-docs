@@ -1,15 +1,12 @@
 (project-config-file)=
 # Project Config File
-
-The configuration of Regolith project is stored inside of `config.json`, at the top level of your Regolith project. This file will be created when you run `regolith init`.
+The configuration for a Regolith project is stored in the `config.json` file located at the root level of your project. This file is automatically created when you run the `regolith init` command.
 
 ## Project Config Standard
-
-Regolith follows the [Project Config Standard](https://github.com/Bedrock-OSS/project-config-standard). This config is a shared format, used by programs that interact with Minecraft projects, such as ["bridge."](https://editor.bridge-core.app/).
+Regolith adheres to the [Project Config Standard](https://github.com/Bedrock-OSS/project-config-standard). This format is shared among various tools that interact with Minecraft projects, such as ["bridge."](https://editor.bridge-core.app/).
 
 ## Regolith Configuration
-
-Regolith builds on this standard with the addition of the `regolith` namespace, which is where all regolith-specific information is stored.
+Regolith extends the standard with the addition of a `regolith` namespace, where all Regolith-specific information is defined.
 
 Example configuration file:
 ```json
@@ -61,27 +58,23 @@ Example configuration file:
 ```
 
 ### Project Config Standard Fields
-- `name`- The name of the project. Regolith uses it to determine the names of the exported packs in some cases. See {ref}`Export Targets<export-targets>` for more information.
-- `author`- The author of the project.
-- `packs`- The location of the behavior and resource packs.
+- `name`: The name of the project. Regolith may use this value to name exported packs. For more details, see {ref}`Export Targets<export-targets>`.
+- `author`: The author of the project.
+- `packs`: Specifies the locations of the behavior and resource packs.
 
 ### Regolith Fields
-Everything inside the `regolith` field contains Regolith-specific information.
+The `regolith` field contains all Regolith-specific configurations.
 
 #### formatVersion
-The version of the Regolith configuration format. This is used to determine how Regolith should read the configuration file. Usually, you don't have to worry about this field, Regolith will create it for you when you initialize a project. You can read more about it on the {ref}`format versions page<format-versions>`.
+Specifies the version of the Regolith configuration format. This field determines how Regolith interprets the configuration file. Generally, you don't need to modify this field, as Regolith automatically sets it during project initialization. For more details, refer to the {ref}`format versions page<format-versions>`.
 
 (project-config-data-path)=
 #### dataPath
-The path to the folder where Regolith will store the data folders of the filters. It's like an extension to `behaviorPack` and `resourcePack` folders, feeding data to your project, but specifically for the Regolith filters.
+Defines the path to the folder where Regolith stores the data used by filters. This folder acts as an extension to the `behaviorPack` and `resourcePack` directories, providing additional data specifically for use with Regolith filters.
 
 (filter-definitions)=
 #### filterDefinitions
-Filter definitions field contains a list of the filters used in the project. Every time you run the `regolith install` command, Regolith will add a new filter to this list with its version and URL, so the field is mostly managed by Regolith.
-
-The only time you should manually edit this field is when you want create a {ref}`local filter<local-filters>`.
-
-The syntax of the `filterDefinitions` field is as follows:
+The `filterDefinitions` field lists all filters used in the project. Whenever you run the `regolith install` command, Regolith updates this field by adding new filters along with their versions and URLs.Typically, this field is managed by Regolith, and manual editing is not required unless you need to create a {ref}`local filter<local-filters>`.Here's an example of the `filterDefinitions` syntax:
 ```json
 "filterDefinitions": {
     "name_ninja": {
@@ -92,16 +85,20 @@ The syntax of the `filterDefinitions` field is as follows:
     "local_filter": {
         "runWith": "python",
         "script": "filters/local_filter/main.py"
-    },
+    }
 }
 ```
-In this example `name_ninja` is a filter downloaded from the internet with {ref}`pinned version<filter-versioning>` 1.2.4, and the `local_filter` is a Python filter that is stored locally.
+In this example:
+
+- `name_ninja` is a filter downloaded from the internet with a {ref}`pinned version<filter-versioning>` of 1.2.4.
+
+- `local_filter` is a Python-based filter stored locally within the project.
 
 ```{note}
-The `venvSlot` property used in the example only make sense in the context of Python filters and very rarely needs to be specified. It is unique in a way that you can specify it in the remote filter definition, and it will be copied to the filter definitions defined in the {ref}`filter.json<online-filter-definition>` file. You can read more about it in the {ref}`venv handling<venv-handling>` section of the Python filters page.
+The `venvSlot` property used in the example only makes sense in the context of Python filters and is rarely required. When specified in a remote filter definition, it is copied into the filter definitions found in the {ref}`filter.json<online-filter-definition>` file. For more details, see the {ref}`venv handling<venv-handling>` section of the Python filters page.
 ```
+The syntax for local filters varies depending on the filter type. Refer to the {ref}`filter definition page<filter-definition>` for more information.
 
-The syntax used for the local filters is different basedon the filter kind. You can read more about it in the {ref}`filter definition page<filter-definition>`.
 
 #### profiles
-Profiles are sequences of filters that you can run with the `regolith run` command. You can read more about them in the {ref}`profiles page<profiles>`.
+Profiles define sequences of filters to execute using the `regolith run` command. Learn more about profiles on the {ref}`profiles page<profiles>`.

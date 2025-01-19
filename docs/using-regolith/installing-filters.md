@@ -1,57 +1,59 @@
 (installing-filters)=
 # Installing Filters
+To begin using a filter in Regolith, follow these four steps:
 
-To start using a filter, you need to do four things:
-
- 1. Ensure you can run the filter
- 2. Install the filter
- 3. Add the filter to the profile which you would like to use it.
- 4. Run your profile, to test it out!
+1. Ensure that you can run the filter.
+2. Install the filter.
+3. Add the filter to the desired profile.
+4. Run your profile to test the filter.
 
 ## Filter Dependencies
+Filters are typically written in specific programming languages, and these languages may not be installed on your computer by default. Before installing a filter, ensure you have the required programming language(s) installed. Detailed installation instructions for every Regolith-supported language can be found in the "Filter Types" documentation.
 
-Filters are written in [programming languages](https://www.wikiwand.com/en/Programming_language). These languages may not be installed on your computer by default. Before installing a filter, you should ensure you have the proper programming language installed. The "Filter Types" documentation has detailed installation instructions for every regolith-supported language!
-
-For example, if the filter relies on Python, you can find installation instructions {ref}`here<python-filters>`.
+For instance, if a filter depends on Python, you can find the installation instructions {ref}`here<python-filters>`.
 
 (install-command)=
 ## Install Command
-
 ```{warning}
-The `install` command relies on `git`. You can read more about Git {ref}`here<git-dependency>`.
+The `install` command requires `git`. You can read more about Git {ref}`here<git-dependency>`.
 ```
 
-Regolith contains a powerful installation command, downloads a filter from GitHub, and installs any required libraries for you. In general, the format is like this: `regolith install <filter_identifier>`.
+Regolith provides a powerful `install` command that downloads filters from Git repositories and installs any necessary libraries. The general format is:
+```text
+regolith install <filter_identifier>
+```
 
-The value of `filter_identifier` will depend on the URL where the filter is hosted. Filters listed on the {ref}`resolvers<filter-resolvers>` in your {ref}`user configuration<user-configuration>` can be installed directly, just with their name. By default Regolith uses the resolver hosted on [Bedrock-OSS/regolith-filter-resolver](https://github.com/Bedrock-OSS/regolith-filter-resolver/blob/main/resolver.json) repository.
+The `filter_identifier` depends on where the filter is hosted. Filters listed in the {ref}`resolvers<filter-resolvers>` of your {ref}`user configuration<user-configuration>` can be installed directly by name. By default, Regolith uses the resolver hosted on the [Bedrock-OSS/regolith-filter-resolver](https://github.com/Bedrock-OSS/regolith-filter-resolver/blob/main/resolver.json) repository.
 
-
-For example, to install the `name_ninja` filter (which is one of the filters created by Bedrock-OSS), you would run:
+For example, to install the `name_ninja` filter (a Bedrock-OSS filter), run:
 ```text
 regolith install name_ninja
 ```
 
-If the filter is not listed on the resolver repository, you need to use the following format:
-`github.com/<user>/<repository>/<folder>`.
+If the filter is not listed in the resolver repository, you need to use the following format:
+```text
+regolith install github.com/<user>/<repository>/<folder>
+```
 
-Or, if the filter is not hosted on GitHub, more generally:
-`<repository-url>/<folder>`.
+Or, for non-GitHub hosted filters:
+```text
+regolith install <repository-url>/<folder>
+```
 
-For example, to install `name_ninja` using the full format, you would run:
+For example, to install `name_ninja` using the full format:
 ```text
 regolith install github.com/Bedrock-OSS/regolith-filters/name_ninja
 ```
 
-The install command accepts multiple arguments, so you can install quickly install multiple fliters by running `regolith install <filter1> <filter2>...`, for example:
+You can install multiple filters at once by passing multiple arguments:
 ```text
 regolith install name_ninja texture_list
 ```
 
-The `install` command also supports installing specific versions of the filters. You can read more about in the {ref}`Filter Versioning<filter-versioning>` page. By default Regolith installs the most recent release of the filter.
+The `install` command also supports installing specific versions of filters. For more details, refer to the {ref}`Filter Versioning<filter-versioning>` page. By default, Regolith installs the latest release of each filter.
 
 ## Adding Filter to Profile
-
-After installing, the filter will appear inside `filterDefinitions` of `config.json`. You can now add this filter to a profile like this:
+Once the filter is installed, it will appear in the `filterDefinitions` section of `config.json`. You can now add it to a profile, like this:
 
 ```json
 "default": {
@@ -62,35 +64,31 @@ After installing, the filter will appear inside `filterDefinitions` of `config.j
   },
   "filters": [
     {
-      "filter": "name_ninja", // The name of the filter from filterDefinitions
+      "filter": "name_ninja" // The name of the filter from filterDefinitions
     }
   ]
 }
 ```
-
 If the filter doesn't need any {ref}`additional configuration<project-config-filters-properties>` you can append it to the end of the list of the filters of the profile by using the `--profile` flag. For example:
 ```text
 regolith install name_ninja --profile=default
 ```
-This command would append the filter to the filters list of the default profile.
+This command will automatically add the filter to the filter list of the `default` profile.
 
 ## Install All Command
+Regolith is designed to be used with Git version control. By default, the {ref}`.regolith<project-cache>` folder is ignored. This means that when collaborating on a project or re-cloning existing ones, you'll need a quick way to re-download all the filters.
 
-Regolith is intended to be used with git version control, and by default the {ref}`.regolith<project-cache>` folder is ignored. That means that when you collaborate on a project, or simply re-clone your existing projects, you will need an easy way to download all the filters again!
-
-You may use the command `regolith install-all`, which will check `config.json`, and install every filter in the `filterDefinitions`.
-
+You can use the `regolith install-all` command, which checks your `config.json` file and installs every filter listed in the `filterDefinitions`.
 
 ## Cached Results of Regolith Install
+When installing multiple filters in quick succession, Regolith avoids unnecessary updates to the filter and resolver repositories that are {ref}`cached on your computer<regolith-cache>`. It checks the timestamp of the last cache update and skips refreshing the cache if it's recent enough.
 
-When you install multiple filters in a quick succession, it doesn't make much sense to update the filter and resolver respositories {ref}`cached on your computer<regolith-cache>`. The install command checks the time of the last cache update and skips its update, when it's recent enough.
+In some situations, you might want to skip the cache wait time and force an update. The `install` command has two flags that can force a cache update:
 
-In some situations, you may want to skip the waiting time and force the cache update. The install command, has two flags that you can use to force the cache update during the installation:
+- `--force-filter-refresh`: Forces the update of the {ref}`filter cache<filter-cache>`, even if the filter repository was downloaded recently.
+- `--force-resolver-refresh`: Forces the update of the {ref}`resolver cache<resolver-cache>`, even if the resolver repository was downloaded recently. Note: This flag is not available for the `install-all` command because `install-all` doesn't use resolvers; it depends on the URLs provided directly in the {ref}`config.json<project-config-file>`.
 
-- `--force-filter-refresh` - forces the update of the {ref}`filter cache<filter-cache>`, even if the filter repository was downloaded recently.
-- `--force-resolver-refresh` - forces the update of the {ref}`resolver cache<resolver-cache>` even if the resolver repository was downloaded recently. This flag is not available for the install-all command, because install-all doesn't use the resolvers, it relies on the URLs provided directly in the {ref}`config.json<project-config-file>` file.
-
-You can change the default cooldown times for downloading in your {ref}`user configuration<user-configuration>`.
+You can adjust the default cooldown times for downloading filters in your {ref}`user configuration<user-configuration>`.
 
 If you want to update the filter resolvers, without installing any filters, you can use the following command:
 ```text

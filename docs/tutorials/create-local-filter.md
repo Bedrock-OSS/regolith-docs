@@ -1,16 +1,13 @@
 (create-local-filter-tutorial)=
 # Create Local Filter (Tutorial)
+This step-by-step tutorial explains how to create a basic local Regolith filter using Python. By the end of this tutorial, you'll have a working filter that generates two `hello-from-local-filter.txt` files in your resource and behavior packs.
 
-This is a step-by-step tutorial that explains how to create a basic local Regolith filter using the Python programming language. At the end of this tutorial, you will have a working filter that creates two hello-from-local-filter.txt files in resource and behavior packs.
-
-You can also read about the local filters in the {ref}`Local Filters<local-filters>` section of the documentation.
+You can also refer to the {ref}`Local Filters<local-filters>` section for more detailed information.
 
 ## Requirements
-
-Before you can begin, you need to ensure that Python is installed on your system. You can find the installation instructions on the {ref}`Python Filters<installing-python>` page.
+Before starting, ensure Python is installed on your system. For installation instructions, refer to the {ref}`Python Filters<installing-python>` page.
 
 ## Instructions
-
 **1.** Create a new Regolith project.
 
 {ref}`Initialize a new project<getting-started>` by running the following command in a blank folder:
@@ -20,7 +17,7 @@ regolith init
 
 **2.** Create a Python file for your filter.
 
-Create a new folder in the root of your project called filters. Inside this folder, create a new Python file called `hello_filter.py`. You can pick any other name and puting the script in the filters folder is optional, but it is a good practice to keep your filters organized.
+Create a folder named `filters` in the root of your project. Inside this folder, create a new Python file, `hello_filter.py` (you can choose a different path if you like, but it's a good practice to organize filters this way).
 
 filters/hello_filter.py:
 ```python
@@ -86,8 +83,8 @@ Edit the `profiles` section of the config file to include the reference to your 
 }
 ```
 
-Note that the default {ref}`export target<export-targets>` is `development`. If you change it to `local`, the files will be exported to a `build` folder in the project root which is useful if you just want to see how the filter works.
+By default, the export target is set to `development`. If you prefer to export the files to a `build` folder in the project root for testing, you can change the target to `local`.
 
 **5.** Run the filter.
 
-That's it! You successfully created a local filter. The resource and behavior packs created by Regolith should now contain the `hello-from-local-filter.txt` files with the greeting messages.
+Now that you've set up the filter, run the Regolith project. The `hello-from-local-filter.txt` files will be created in both the resource pack and behavior pack directories with their respective greeting messages.

@@ -42,7 +42,7 @@ Data Folder <using-regolith/data-folder>
 :hidden:
 :caption: Filters
 
-Filter Introduction <filters/filter-introduction>
+Filters Introduction <filters/filter-introduction>
 .NET Filters <filters/dotnet-filters>
 Deno Filters <filters/deno-filters>
 Executable Filters <filters/executable-filters>
@@ -75,13 +75,14 @@ Create Online Filter<tutorials/create-online-filter>
 ```
 
 # Regolith
-Regolith is a tool that helps with creation of Resource Pack & Behavior Pack for Minecraft Bedrock Edition.
+Regolith is a powerful tool for creating Resource Packs and Behavior Packs for Minecraft Bedrock Edition.
 
-- ⚡️ **Blazingly Fast** - Regolith can improve your productivity by automating away boring or repetitive tasks.
-- 🧩 **Flexible** - Regolith is designed with a language-agnostic, tool-agnostic feature set. The flexibility of Regolith allows you to bring all scripts and tools under a single, unified workflow.
-- 🏷️ **Version Control Friendly** - Regolith keeps the ‘source of truth’ out of your com.mojang folder, allowing for seamless git integration.
+- ⚡️ **Blazingly Fast**: Regolith can improve your productivity by automating away boring or repetitive tasks.
+- 🧩 **Flexible**: Regolith is designed with a language-agnostic and tool-agnostic feature set. The flexibility of Regolith allows you to bring all scripts and tools into a unified workflow.
+- 🏷️ **Version Control Friendly**: Regolith keeps your "source of truth" separate from the `com.mojang` folder, ensuring effortless Git integration.
 
 
-If you're looking for Regolith repository, you can find it here: [https://github.com/Bedrock-OSS/regolith/](https://github.com/Bedrock-OSS/regolith/)
+Looking for the Regolith repository? Find it here: [GitHub Repository](https://github.com/Bedrock-OSS/regolith/).
 
-If you want to contact the developers, you can join the [Discord server](https://discord.gg/UQ82Qrean7).
+Need to reach the developers? Join the community on [Discord](https://discord.gg/UQ82Qrean7).
+

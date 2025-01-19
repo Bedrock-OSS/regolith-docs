@@ -1,70 +1,61 @@
 (user-configuration)=
 # User Configuration
+The user configuration file is stored in the Regolith app data folder. On Windows, it is located at `%localappdata%\regolith\user_config.json`. On other systems, refer to the Golang documentation for the [os.UserCacheDir](https://pkg.go.dev/os#UserCacheDir) function to find the path it returns that corresponds to the `%localappdata%` on Windows.
 
-User configuration file is stored in the Regolith app data folder. On Windows, it's `%localappdata%\regolith\user_config.json`. On other systems, please refer to the Golang documentation of the [os.UserCacheDir](https://pkg.go.dev/os#UserCacheDir) function to find the path it returns that corresponds to the `%localappdata%` on Windows.
-
-The `user_config.json` file is used to store the user preferences for Regolith.
+The `user_config.json` file stores user preferences for Regolith.
 
 ## User Configuration Properties
-
-User configuration can be examined using the {ref}`regolith config<regolith-config-command>` command or by opening the `user_config.json` file in a text editor. The `regolith config` command with `--full` flag will show all properties, including the default values (which aren't defined in the file). This section describes the properties that can be found in the user configuration file.
+You can examine the user configuration either by using the {ref}`regolith config<regolith-config-command>` command or by opening the `user_config.json` file in a text editor. Using the `regolith config` command with the `--full` flag will display all properties, including default values (which aren't defined in the file). Below are the properties you may find in the user configuration file.
 
 (use-project-app-data-storage)=
 ### use_project_app_data_storage: bool
+**Default** : `false`
 
-Default: `false`
-
-If set to `true`, the Regolith projects will store their cache (filters, their dependencies, etc.) in the {ref}`project-cache<project-cache>` folder, instead of `.regolith` subfolder stored in the project files.
+If set to `true`, Regolith will store its project cache (filters, dependencies, etc.) in the {ref}`project-cache<project-cache>` folder, instead of the `.regolith` subfolder located within the project directory.
 
 ### username: string
+**Default** : `"Your name"`
 
-Default: `"Your name"`
-
-The name of the user, which will be used in the `author` field of the {ref}`config.json<project-config-file>` file when creating a new project.
+The user's name, which will be used in the `author` field of the {ref}`config.json<project-config-file>` file when creating a new project.
 
 ### resolvers: list[string]
+**Default** : `["github.com/Bedrock-OSS/regolith-filter-resolver/resolver.json"]`
 
-Default: `["github.com/Bedrock-OSS/regolith-filter-resolver/resolver.json"]`
+A list of {ref}`resolvers<filter-resolvers>` used to resolve filter names to URLs when running the {ref}`regolith install<installing-filters>` command. The default resolver URL is always added at the end of the list.
 
-A list of {ref}`resolvers<filter-resolvers>`, used to resolve filter names to URLs when using the {ref}`regolith install<installing-filters>` command. The default URL is always added at the end of the list.
-
-Note that the "URLs" used by the resolvers are not actual URLs. They have two parts, separated by `/`. The first part is an URL to a repository on GitHub, and the second part is a path to the resolver file relative to the root of the repository. For example, the default resolver is on the `github.com/Bedrock-OSS/regolith-filter-resolver` repository, in the `resolver.json` file, but `github.com/Bedrock-OSS/regolith-filter-resolver/resolver.json` is not a valid URL.
+Note: The "URLs" in the resolvers list are not actual URLs. They consist of two parts, separated by a `/`. The first part is a repository URL (e.g., a GitHub repository), and the second part is the path to the resolver file within the repository. For example, the default resolver is stored in the `github.com/Bedrock-OSS/regolith-filter-resolver` repository at the `resolver.json` file, but `github.com/Bedrock-OSS/regolith-filter-resolver/resolver.json` is not a valid URL.
 
 ### resolver_cache_update_cooldown: string
+**Default** : `"5m"`
 
-Default: `"5m"`
-
-The cooldown between cache updates for the {ref}`resolver repositories<resolver-cache>`. The cooldown is specified in the [Go duration format](https://pkg.go.dev/time#ParseDuration). If you're running `regolith install` multiple times in a short period, the resolver cache will not be updated every time, but only after the cooldown period.
+The cooldown duration between updates to the {ref}`resolver repositories<resolver-cache>`. This duration is specified in [Go duration format](https://pkg.go.dev/time#ParseDuration). If you run `regolith install` multiple times within a short period, the resolver cache will only update after the cooldown period has passed.
 
 ### filter_cache_update_cooldown: string
+**Default** : `"5m"`
 
-Default: `"5m"`
-
-The cooldown between cache updates for the {ref}`filter repositories<filter-cache>`. The cooldown is specified in the [Go duration format](https://pkg.go.dev/time#ParseDuration). If you're running `regolith install` multiple times in a short period, the filter cache will not be updated every time, but only after the cooldown period.
+The cooldown duration between updates to the {ref}`filter repositories<filter-cache>`. This is also specified in [Go duration format](https://pkg.go.dev/time#ParseDuration) . If you run `regolith install` multiple times quickly, the filter cache will only update after the cooldown period has elapsed.
 
 (regolith-config-command)=
 ## Regolith Config Command
+The `regolith config` command is used to manage the user configuration of Regolith. It allows you to access and modify the configuration stored in the `user_config.json` file.
 
-The `regolith config` command is used to manage the user configuration of Regolith. It can access and modify the user configuration file. The data is stored in the application data folder in the `user_config.json` file.
+The behavior of this command changes depending on the flags and the number of arguments provided. The following cheat sheet outlines the possible flag and argument combinations and their effects:
 
-The behavior of the command changes based on the used flags and the number of provided arguments. The cheetsheet below shows the possible combinations of flags and arguments and what they do:
+- `regolith config` - Prints all properties defined in the user configuration file.
+- `regolith config --full` - Prints all properties, including default values for properties that are unspecified.
+- `regolith config <key>` - Prints the value of the specified property.
+- `regolith config <key> <value>` - Sets the value of the specified property.
+- `regolith config <key> --delete` - Deletes the specified property.
+- `regolith config <key> <value> --append` - Appends a value to a list property.
+- `regolith config <key> <value> --index <index>` - Replaces an item in a list property at the specified index.
+- `regolith config <key> --index <index> --delete` - Deletes an item in a list property at the specified index.
 
-- `regolith config` - Print all properties defined in the user configuration file.
-- `regolith config --full` - Print all properties including the default values of the unspecified properties.
-- `regolith config <key>` - Print specified property.
-- `regolith config <key> <value>` - Set property value.
-- `regolith config <key> --delete` - Delete a property.
-- `regolith config <key> <value> --append` - append to a list proeprty.
-- `regolith config <key> <value> --index <index>` - Replace item in a list property.
-- `regolith config <key> --index <index> --delete` - Delete item in a list property.
-
-The commands that print text can take the `--full` flag to print configuration with the default values included (if they're not defined in the config file). Without the flag, the undefined properties will be printed as null or empty list.
+Commands that print text can include the `--full` flag to display the configuration along with default values (if they are not defined in the configuration file). Without this flag, unspecified properties will be shown as null or an empty list.
 
 ## User Configuration File
+The `user_config.json` file is a regular JSON file with no nesting. While you can edit this file manually, it is not required since all modifications can be done using the `regolith config` command.
 
-The `user_config.json` file is just a regular JSON file without any nesting. You can edit it manually if you want to but you don't have to because everything can be done with the `regolith config` command.
-
-Example `user_config.json` file:
+Here is an example of a `user_config.json` file:
 ```json
 {
 	"use_project_app_data_storage": false,

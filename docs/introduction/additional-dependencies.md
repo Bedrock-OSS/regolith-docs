@@ -1,25 +1,26 @@
 (additional-dependencies)=
 # Additional Dependencies
 
-Regolith can be used as a stand-alone tool for generating Minecraft packs with your local filters. However, you can get the most out of Regolith created by its community and published on the internet. To use these filters, you will need to install additional dependencies. The dependencies you need depend on your workflow. This secotion provides some recommendations/requirements for using Regolith with filters from the internet.
+Regolith can function as a stand-alone tool for generating Minecraft packs with your local filters. However, to fully leverage the power of Regolith and access filters shared online, additional dependencies may be required. These dependencies depend on your workflow. This section provides recommendations and requirements for using Regolith filters from the internet.
 
 (git-dependency)=
 ## Git
-Git is the most popular version control system in the world. It is also the most important dependency of Regolith. Without Git, you won't be able to install filters from the interent in your projects. Regolith uses Git to download filters from online repositories like GitHub.
+Git is the most widely used version control system in the world and an essential dependency for Regolith. Without Git, you won't be able to install filters from online repositories, such as GitHub. Regolith relies on Git to download filters for your projects.
 
-You can download Git from its website: [https://git-scm.com/download/](https://git-scm.com/download/)
+You can download Git from its official website:
+[https://git-scm.com/download/](https://git-scm.com/download/)
 
 ## Filter Runners
 
-Regolith supports filters written in various programming languages. To run these filters, you will need to install the appropriate runtime. You can find the installation instruction for each runtime in pages dedicated to different filter types:
- - {ref}`Python<python-filters>`
- - {ref}`NodeJS<node-filters>`
- - {ref}`Deno<deno-filters>`
- - {ref}`Java<java-filters>`
- - {ref}`Nim<nim-filters>`
- - {ref}`.NET<dotnet-filters>`
+Regolith supports filters written in various programming languages. To use these filters, you need to install the appropriate runtime environment. Installation instructions for each runtime can be found on the pages dedicated to specific filter types:
+- {ref}`Python<python-filters>`
+- {ref}`NodeJS<node-filters>`
+- {ref}`Deno<deno-filters>`
+- {ref}`Java<java-filters>`
+- {ref}`Nim<nim-filters>`
+- {ref}`.NET<dotnet-filters>`
 
-The runtimes are optional, unless you want to use filters written in the corresponding language. Some of the filter types don't require any runtime:
+These runtimes are optional unless you intend to use filters written in the corresponding languages. Some filter types do not require a runtime
 
 - {ref}`Shell Filters<shell-filters>` run shell commands directly.
-- {ref}`Executable Filters<executable-filters>` use compiled executables.
+- {ref}`Executable Filters<executable-filters>` use precompiled executables.

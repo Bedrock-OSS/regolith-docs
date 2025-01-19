@@ -1,23 +1,29 @@
 (filter-definition)=
 # Filter Definition
+A filter definition is a JSON object that specifies a reference to a script, executable, or command. These definitions are used in two places:
+1. The `filterDefinitions` property in the {ref}`config.json<project-config-file>` file for local filters.
+2. The `filters` property in the `filter.json` file for online filters.
 
-Filter definition is a JSON object that defines a single reference to a script/executable, or a command to run. The filter defnitions are used in two places - in the config.json file in `filterDefinitions` property, and in the filter.json file in the `filters` property.
-
-The syntax of the of every kind of filter is different and explained in their respective sections, but in general all filters need to have two properties - `runWith` to specify the filter kind, and a property that specifies the path to the script/executable.
+While the specific syntax varies by filter type (detailed in their respective sections), all filters must include two key properties:
+- **`runWith`** : Specifies the type of filter.
+- **Path Property** : Defines the path to the script or executable.
 
 Regolith currently supports the following filter kinds:
- - {ref}`.NET<dotnet-filters>`
- - {ref}`Deno<deno-filters>`
- - {ref}`Executable<executable-filters>`
- - {ref}`Java<java-filters>`
- - {ref}`Nim<nim-filters>`
- - {ref}`NodeJS<node-filters>`
- - {ref}`Python<python-filters>`
- - {ref}`Shell<shell-filters>`
+- {ref}`.NET<dotnet-filters>`
+- {ref}`Deno<deno-filters>`
+- {ref}`Executable<executable-filters>`
+- {ref}`Java<java-filters>`
+- {ref}`Nim<nim-filters>`
+- {ref}`NodeJS<node-filters>`
+- {ref}`Python<python-filters>`
+- {ref}`Shell<shell-filters>`
 
 (local-filter-definition)=
 ## Local Filter Definition (config.json)
-If you put a filter definition in the {ref}`filterDefinitions<filter-definitions>` property of the {ref}`config.json<project-config-file>` file, you create a local filter. The `filterDefinitions` property is a dictionary where the key is the name of the filter, and the value is the filter definition. The name of the filter is later used in the `filters` property of the same file to reference the filter.
+Defining a filter in the `filterDefinitions` property of the {ref}`config.json<project-config-file>` file creates a local filter. The `filterDefinitions` property is a dictionary where:
+- The **key**  is the filter's name.
+- The **value**  is the filter definition.
+The filter name is then referenced in the `filters` property of the same file.
 
 Example:
 ```json
@@ -28,11 +34,10 @@ Example:
     }
 }
 ```
-This snippet shows how to define a local filter named `my_local_filter` that runs a Python script located in the `filters/local_filter/main.py` file. Different kinds of filters have different properties, please refer to the specific filter type in the Filters documentation section for more information.
+In this example, a local filter named `my_local_filter` runs a Python script located at `filters/my_local_filter/main.py`. Different filter types require specific properties - refer to the documentation for each filter type for more details.
 
 (online-filter-definition)=
 ## Online Filter Definition (filter.json)
-
 The {ref}`online filters<online-filters>` keep their filter definitions in the `filters` property of their filter.json file. The `filters` list in the filter.json is kind of like a mix of `filterDefinitions` and `filters` from config.json. They contain the definition part of the local filter (with `runWith` proeprty and propertis specific to the filter type) and {ref}`the properties from filters property in config.json<project-config-referencing-filters>`.
 
-Online filters, can't reference other online filters, and they can't reference profiles.
+Online filters, can't reference other online filters, and profiles.

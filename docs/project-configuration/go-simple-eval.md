@@ -1,42 +1,40 @@
 (go-simple-eval)=
 # Go-Simple-Eval
-
-Regolith uses the [go-simple-eval library](https://github.com/stirante/go-simple-eval/) to evaluate some expressions in the project configuration file:
-- The `when` expression in the {ref}`filter settings<project-config-filters-properties>` object.
+Regolith uses the [go-simple-eval library](https://github.com/stirante/go-simple-eval/) to evaluate expressions within the project configuration file:
+- The `when` expression in the {ref}`filter settings<project-config-filters-properties>`.
 - The `rpName` and `bpName` in some of the {ref}`export targets<export-targets>`.
 
 ## Syntax
 
-Go-simple-eval uses a simple syntax that supports basic operations you would expect from a programming language.
+Go-simple-eval offers a simple syntax supporting basic operations commonly found in programming languages.
 
 ```{warning}
-This is not a full documentation of go-simple-eval, but the features explained here should be enough for using it in Regolith.
+This section does not provide a full reference for go-simple-eval, but the features outlined here are sufficient for use in Regolith.
 ```
 
 ### Operators
-- Comparison operators: `==`, `!=`, `<`, `<=`, `>`, `>=`
-- Logical operators: `&&`, `||`, `!`
-- Math operators: `+`, `-`, `*`, `/`
-- String concatenation: `+`
+- **Comparison operators** : `==`, `!=`, `<`, `<=`, `>`, `>=`
+- **Logical operators** : `&&`, `||`, `!`
+- **Math operators** : `+`, `-`, `*`, `/`
+- **String concatenation** : `+`
 
 ### Parentheses
-You can use parentheses to group expressions like this: `(1 + 2) * 3`.
+Use parentheses to group expressions, such as `(1 + 2) * 3`.
 
 ### Strings
-Strings must be enclosed in single quotes like this: `'This is a string'`.
+Strings are enclosed in single quotes, like `'This is a string'`.
 
 ### Reserved Words
-- `true` and `false` are reserved words for boolean values.
-- `null` is a reserved word for null values.
+- `true` and `true` and `false`: Reserved for boolean values.
+- `null`: Reserved for null values.
 
 ## Variables
 
-Regolith provides some variables that you can use in the expressions:
-
-- `project.name` - The name of the project.
-- `project.author` - The author of the project.
-- `os` - The host operating system. The value is retrieved from `runtime.GOOS`, which means that based on the host system, the value can be `linux`, `windows`, `darwin`, etc.
-- `arch` - The host architecture. The value is retrieved from `runtime.GOARCH`, which means that based on the host system, the value can be `amd64`, `arm64`, etc.
-- `debug` - whether regolith is running in debug mode or not (using the `--debug` flag).
-- `version` - The version of regolith.
-- `profile` - The name of the profile being run.
+Regolith provides several variables for use in expressions:
+- `project.name`: The name of the project.
+- `project.author`: The author of the project.
+- `os`: The host operating system, retrieved from `runtime.GOOS` (e.g., `linux`, `windows`, `darwin`).
+- `arch`: The host architecture, retrieved from `runtime.GOARCH` (e.g., `amd64`, `arm64`).
+- `debug`: Indicates whether Regolith is running in debug mode (i.e., when the `--debug` flag is used).
+- `version`: The version of Regolith.
+- `profile`: The name of the profile being run.

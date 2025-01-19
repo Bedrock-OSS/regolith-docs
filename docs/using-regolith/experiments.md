@@ -1,14 +1,12 @@
 # Experiments
-
 Experiments are new experimental features of Regolith to be released in the future versions, once proven to be stable and useful. The experiments can be enabled with the `--experiments` flag.
 
 ## size_time_check
-
-The `size_time_check` is an experiment that aims to speed up `regolith run` and `regolith watch` commands. It achieves this by checking the size and modification time of the files before moving them between working and output directories. If the source file is the same size and has the same modification time as the destination file, the target file will remain untouched (Regolith assumes that the files are the same).
+The `size_time_check` experiment aims to improve the performance of the `regolith run` and `regolith watch` commands. It does this by comparing the size and modification time of files before copying them between working and output directories. If the source file and the destination file have the same size and modification time, Regolith assumes they are identical and leaves the destination file unchanged.
 
 The `size_time_check` should greatly speed up the exports of large projects.
 
-The downside of this approach is that on the first run, the export will be slower, but on subsequent runs, the export will be much faster. This means that the `size_time_check` is not recommended for CI where Regolith is run only once.
+The downside of this approach is that on the first run, the export will be slower, but on subsequent runs, the export will be much faster. This means that the `size_time_check` is not recommended for CI where Regolith is run only once. This feature is also not recommended for the projects where most of the files are generated on the fly, as the size and modification time will always be different.
 
 Usage:
 ```

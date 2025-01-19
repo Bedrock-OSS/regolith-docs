@@ -1,25 +1,21 @@
 (filter-development-introduction)=
 # Filter Development Introduction
+This page provides general guidelines for developing filters in Regolith. For detailed information about creating {ref}`online<online-filters>` and {ref}`local<local-filters>` filters, refer to their respective pages.
 
-This page gives general tips about developing filters for Regolith. For more specific information about {ref}`online<online-filters>` and {ref}`local<local-filters>` filters, please see the dedicated pages.
-
-If you aren't a developer, and are looking for information on how to use filters, please see the {ref}`Filters Introduction<filters-introduction>` page.
+If you're not a developer and are looking for instructions on using filters, visit the {ref}`Filters Introduction<filters-introduction>` page instead.
 
 ## The Working Directory of Filters
+Filters are executed in a temporary directory containing three subdirectories: `RP`, `BP`, and `data`. Depending on the user's settings (specifically {ref}`use_project_app_data_storage<use-project-app-data-storage>`), this directory may be located outside the project folder. Files in the temporary directory are copies of the project files.
 
-Filters are run in the temporary directory that contains 3 subdirectories - RP, BP, and data. Depending on the user's settings (specifically the {ref}`use_project_app_data_storage<use-project-app-data-storage>`) this may be outside of the project directory. The files in the temporary directory are copies of the files in the project.
-
-When developing filters, you don't need to worry about finding the paths to the project files because Regolith sets the working directory for you and the structure of the temporary directory is always the same. You can simply find your behavior pack in `./BP/`, resource pack in `./RP/`, and data in `./data/`.
+As a developer, you don't need to manually locate the paths to project files. Regolith automatically sets the working directory for your filter. The directory structure is consistent, with behavior pack files in `./BP/`, resource pack files in `./RP/`, and data files in `./data/`.
 
 ## Non-Destructive Editing
+Since filters aren't actually editing the project files, you don't need to worry about leaving your project in a broken state in case of an error. Regolith never applies the changes your filters make to `RP` and `BP` directories, and changes to the `data` directory require {ref}`explicit permission<filter-property-export-data>` in the filter configuration, and are only applied after a successful run.
 
-Since filters arn not actually editing the project files, you don't need to worry about leaving your project in a broken state in case of an error. Regolith never applies the changes your filter makes to `RP` and `BP` directories, and changes to the `data` directory require {ref}`explicit permission<filter-property-export-data>` in the filter configuration, and are only applied after a successful run.
+## Accessing Files Outside the Temporary Directory Using Environment Variables
+Although modifying files outside the temporary directory goes against Regolith's non-destructive editing philosophy, it may be necessary in specific scenarios. To facilitate this, Regolith provides the following environment variables, which are set for every filter run:
 
-## Accessing Files Outside of the Temporary Directory Using Environment Variables
+- `ROOT_DIR`: Contains the absolute path to the project's root directory (where the `config.json` file resides).
+- `FILTER_DIR`: Contains the absolute path to the directory where the filter is defined. For online filters, this points to the directory containing the `filter.json` file within the {ref}`project cache<project-cache>`. For local filters, it is the same as `ROOT_DIR`, as their definition resides in the `config.json` file.
 
-While modifying files outside of the temporary directory goes against the non-destructive editing philosophy of Regolith, sometimes it's necessary. If your filter needs to access files outside of the temporary directory, Regolith provides some environment variables to help you with that. These are active for every filter run by Regolith:
-
- - `ROOT_DIR` - This environemnt variable contains an absolute path to the project root directory, where config.json file is.
- - `FILTER_DIR` - This environment variable contains an absolute path to the directory where the filter is defined, For online filters, this is a directory with the filter.json file inside the {ref}`project cache<project-cache>`. For local filters, this is the same as the `ROOT_DIR`, because their definition is inside the config.json file.
-
-Be aware that if your filter crashes while editing files outside of the temporary directory, there is no mechanism to revert the changes. Your filter will need to handle this itself.
+If your filter interacts with files outside the temporary directory and an error occurs, Regolith cannot automatically revert those changes. Your filter should include mechanisms to handle such scenarios and ensure file integrity.
