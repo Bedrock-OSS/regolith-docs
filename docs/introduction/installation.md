@@ -46,6 +46,22 @@ regolith-update.ps1
 
 The script will check for available updates to Regolith and install them.
 
+## Nix (Linux)
+
+Regolith is available in [nixpkgs](https://github.com/nixos/nixpkgs) with the `regolith` attribute. The unstable channel usually includes the latest release.
+
+```text
+nix-shell -p regolith
+```
+
+Alternatively if you're using NixOS, you can install Regolith by adding the following to your `configuration.nix` file:
+
+```nix
+environment.systemPackages = [
+  pkgs.regolith
+];
+```
+
 ## Stand-alone Executable File (Linux, Mac, and Windows)
 
 Regolith can also be installed as a stand-alone executable. Download the appropriate ZIP file for your operating system from the [GitHub release page](https://github.com/Bedrock-OSS/regolith/releases/latest).
