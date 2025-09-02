@@ -38,3 +38,4 @@ Regolith provides several variables for use in expressions:
 - `debug`: Indicates whether Regolith is running in debug mode (i.e., when the `--debug` flag is used).
 - `version`: The version of Regolith.
 - `profile`: The name of the profile being run.
+- `mode`: The mode that regolith is running in (e.g. `build`, `watch`)
