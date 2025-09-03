@@ -39,3 +39,4 @@ Regolith provides several variables for use in expressions:
 - `version`: The version of Regolith.
 - `profile`: The name of the profile being run.
 - `mode`: The mode that regolith is running in (e.g. `build`, `watch`)
+- `initial`: Returns true if it's the first execution in watch mode (or if you just build) and false after that
