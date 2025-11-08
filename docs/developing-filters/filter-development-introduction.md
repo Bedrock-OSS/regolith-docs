@@ -4,6 +4,7 @@ This page provides general guidelines for developing filters in Regolith. For de
 
 If you're not a developer and are looking for instructions on using filters, visit the {ref}`Filters Introduction<filters-introduction>` page instead.
 
+(the-working-directory-of-filters)=
 ## The Working Directory of Filters
 Filters are executed in a temporary directory containing three subdirectories: `RP`, `BP`, and `data`. Depending on the user's settings (specifically {ref}`use_project_app_data_storage<use-project-app-data-storage>`), this directory may be located outside the project folder. Files in the temporary directory are copies of the project files.
 

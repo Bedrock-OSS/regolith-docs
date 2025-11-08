@@ -13,3 +13,21 @@ Usage:
 regolith run --experiments size_time_check
 regolith watch --experiments size_time_check
 ```
+
+## symlink_export
+The `symlink_export` experiment allows Regolith to use symbolic links when exporting files from the {ref}`working directory<the-working-directory-of-filters>` to the output directory. Instead of copying files, Regolith creates symlinks in the working directory that point to the files in the output directory. This can speed up the export process, especially for large projects with many files.
+
+The downside of this approach is that Regolith deletes the contents of the output directory before generating files. This means that if generating fails, the output directory will be left empty or incomplete until the next successful run.
+
+Usage:
+```
+regolith run --experiments symlink_export
+regolith watch --experiments symlink_export
+```
+
+```{note}
+When using this experiment, Regolith will always create output RP and BP files in the output directory, even if they're empty. This is to ensure that the symlinks in the working directory always point to valid files.
+```
+
+## Combining Experiments
+It's possible to combine `size_time_check` and `symlink_export` experiments to leverage the benefits of both.
