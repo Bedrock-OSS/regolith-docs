@@ -100,13 +100,42 @@ Shared Properties (for both options):
 - `bpName` (optional): A {ref}`go-simple-eval<go-simple-eval>` expression to generate the name of the behavior pack folder. Defaults to `"project.name+'_bp'"` if not specified.
 - `readOnly` (optional): If set to `true`, the exported files will be read-only. Defaults to `false`.
 
+
+(how-does-regolith-determine-the-com-mojang-path)=
+## How does Regolith determine the com.mojang path?
+
+On Windows, Regolith uses default paths for Minecraft 1.21.120+.
+
+For the standard build (Minecraft Bedrock):
+- `development` exports go to `%APPDATA%/Minecraft Bedrock/Users/Shared/games/com.mojang/...` to development behavior and resource pack folders.
+- `world` exports go to `%APPDATA%/Minecraft Bedrock/Users/<user-id>/games/com.mojang/` to the worlds folder, where `<user-id>` is the first found folder that isn't named `Shared`.
+
+For the preview build (Minecraft Bedrock Preview), the structure is similar:
+- `development`: `%APPDATA%/Minecraft Bedrock Preview/Users/Shared/games/com.mojang/...`
+- `world`: `%APPDATA%/Minecraft Bedrock Preview/Users/<user-id>/games/com.mojang/...`
+
+For the education build (Minecraft Education Edition), it defaults to `%APPDATA%/Minecraft Education Edition/games/com.mojang` for both `development` and `world` exports (no Users/Shared distinction).
+
+On other operating systems, Regolith relies exclusively on {ref}`export target environment variables<export-target-environment-variables>`.
+
+Environment variables always take precedence over defaults.
+
 (export-target-environment-variables)=
 ## Export Target Environment Variables
 
-Some of the export targets listed above wouldn't make sense on systems other than Windows with Minecraft installed. They often rely on finding the `com.mojang` path first, and then placing the files in a path relative to that. This problem can be solved by setting environment variables that Regolith will use instead of the `com.mojang` path.
+Some export targets rely on the `com.mojang` path. Environment variables provide flexibility for overrides on non-Windows systems, testing without Minecraft, or custom configurations. You can choose any combination - more specific variables offer greater control over paths used for packs or worlds. Regolith prioritizes specific variables, then general ones.
 
-- `COM_MOJANG`: A fake path to the `com.mojang` folder in regular Minecraft releases. Used by the `development` build.
-- `COM_MOJANG_PREVIEW`: A fake path to the `com.mojang` folder in Minecraft preview releases. Used by the `preview` build.
-- `COM_MOJANG_EDU`: A fake path to the `com.mojang` folder in Minecraft Education Edition releases. Used by the `education` build.
+When the variables are unset, Regolith uses the paths described in {ref}`How does Regolith determine the com.mojang path?<how-does-regolith-determine-the-com-mojang-path>`.
 
-Starting with Regolith 1.5.2, environment variables can be used on Windows as well. These variables take precedence over the default com.mojang paths.
+General variables:
+- `COM_MOJANG`: Sets the `com.mojang` path for standard Minecraft (`development` and `world` exports).
+- `COM_MOJANG_PREVIEW`: For Minecraft Preview (`preview` exports).
+- `COM_MOJANG_EDU`: For Minecraft Education Edition (`education` exports).
+
+More specific variables:
+- `COM_MOJANG_WORLDS`: Sets the `com.mojang` path specifically for `world` exports in standard builds.
+- `COM_MOJANG_PACKS`: For `development` exports in standard builds.
+- `COM_MOJANG_WORLDS_PREVIEW`: For `world` exports in preview builds.
+- `COM_MOJANG_PACKS_PREVIEW`: For `development` exports in preview builds.
+
+Education edition doesn't have specific variables since its file structure contains only one `com.mojang` path.
