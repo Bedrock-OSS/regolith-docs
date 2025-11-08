@@ -65,9 +65,11 @@ The `exact` export target  allows you to specify the exact locations for the exp
 ```
 
 Properties:
-- `rpPath`: The path to the resource pack folder. The path can be relative or absolute and supports environment variables using the `%VARIABLE_NAME%` syntax.
-- `bpPath`: The path to the behavior pack folder. The path can be relative or absolute and supports environment variables using the `%VARIABLE_NAME%` syntax.
+- `rpPath`: The path to the resource pack folder.
+- `bpPath`: The path to the behavior pack folder.
 - `readOnly` (optional): If set to `true`, the exported files will be read-only. Defaults to `false`.
+
+The `rpPath` and `bpPath` can be relative or absolute and supports environment variables using the `%VARIABLE_NAME%`, `$VARIABLE_NAME` and `${VARIABLE_NAME}` syntax.
 
 ### World Export Target
 The `world` export target places the compiled files into a specific world, making it ideal for teams who prefer working directly within the world rather than in development pack folders.
