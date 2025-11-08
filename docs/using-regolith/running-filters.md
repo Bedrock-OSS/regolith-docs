@@ -7,7 +7,7 @@ There are three ways to run Regolith:
 - `regolith apply-filter`
 
 ## Run and Watch Commands
-The `run` and `watch` commands are quite similar. Both execute a profile, but there is a key difference: the `watch` command monitors changes in the RP, BP, and {ref}`data<data-folder>` folders, automatically rerunning the profile when changes are detected. In contrast, the `run` command executes the profile only once.The syntax for the `run` and `watch` commands is as follows:
+The `run` and `watch` commands are quite similar. Both execute a profile, but there is a key difference: the `watch` command monitors changes in the RP, BP, {ref}`data<data-folder>` folders and optionally additional folders specified in the {ref}`watchPaths<watch-paths>` property of the configuration file, automatically rerunning the profile when changes are detected. In contrast, the `run` command executes the profile only once.The syntax for the `run` and `watch` commands is as follows:
 
 ```text
 regolith run [profile-name]

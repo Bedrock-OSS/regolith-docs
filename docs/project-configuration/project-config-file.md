@@ -20,6 +20,7 @@ Example configuration file:
     "regolith": {
         "formatVersion": "1.4.0",
         "dataPath": "./packs/data",
+        "watchPaths": ["custom_watched_folder"],
         "filterDefinitions": {
             "bump_manifest": {
                 "url": "github.com/Bedrock-OSS/regolith-filters",
@@ -71,6 +72,10 @@ Specifies the version of the Regolith configuration format. This field determine
 (project-config-data-path)=
 #### dataPath
 Defines the path to the folder where Regolith stores the data used by filters. This folder acts as an extension to the `behaviorPack` and `resourcePack` directories, providing additional data specifically for use with Regolith filters.
+
+(watch-paths)=
+#### watchPaths
+An optional array of additional paths that Regolith monitors for changes when using the `regolith watch` command. This allows you to include custom folders. Relative paths are relative to the project root.
 
 (filter-definitions)=
 #### filterDefinitions
