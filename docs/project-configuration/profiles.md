@@ -86,3 +86,26 @@ An optional field for convenience. Set to `true` to disable a filter temporarily
 (project-config-when-property)=
 #### when: string
 The optional `when` field is a boolean expression that determines whether a filter runs. If the expression evaluates to `false`, the filter is skipped.This field is commonly used to target specific operating systems or architectures. You can learn more about its syntax and available variables {ref}`here<go-simple-eval>`.
+
+(project-config-running-async-filers)=
+### Referencing filters to run in parallel
+If an object in the `filters` array contains a `asyncFilters` field, it references a list of filter objects (as above) defined in {ref}`filterDefinitions<filter-definitions>` that are ran in parallel.
+```json
+{
+    "filters": [
+        {
+            "filter": "example1"
+        },
+        {
+            "asyncFilters": [
+                {
+                    "filter": "example2"
+                },
+                {
+                    "filter": "example3"
+                }
+            ]
+        }
+    ]
+}
+```
