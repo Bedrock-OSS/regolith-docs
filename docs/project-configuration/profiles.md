@@ -67,6 +67,13 @@ If an object in the `filters` array contains a `profile` field, it references an
 
 Using profiles is especially helpful when you have multiple similar filters and want to avoid redundant configuration.
 
+#### disabled: bool
+An optional field for convenience. Set to `true` to disable a filter temporarily without removing it from the profile.
+
+(project-config-when-property)=
+#### when: string
+The optional `when` field is a boolean expression that determines whether a filter runs. If the expression evaluates to `false`, the filter is skipped.This field is commonly used to target specific operating systems or architectures. You can learn more about its syntax and available variables {ref}`here<go-simple-eval>`.
+
 (project-config-referencing-filters)=
 ### Referencing Filters
 If an object in the `filters` array contains a `filter` field, it references a filter defined in {ref}`filterDefinitions<filter-definitions>`. This object can also include additional properties to customize how the filter runs.
