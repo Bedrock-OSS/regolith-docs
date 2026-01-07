@@ -67,6 +67,13 @@ If an object in the `filters` array contains a `profile` field, it references an
 
 Using profiles is especially helpful when you have multiple similar filters and want to avoid redundant configuration.
 
+#### disabled: bool
+An optional field for convenience. Set to `true` to disable a filter temporarily without removing it from the profile.
+
+(project-config-when-property)=
+#### when: string
+The optional `when` field is a boolean expression that determines whether a filter runs. If the expression evaluates to `false`, the filter is skipped.This field is commonly used to target specific operating systems or architectures. You can learn more about its syntax and available variables {ref}`here<go-simple-eval>`.
+
 (project-config-referencing-filters)=
 ### Referencing Filters
 If an object in the `filters` array contains a `filter` field, it references a filter defined in {ref}`filterDefinitions<filter-definitions>`. This object can also include additional properties to customize how the filter runs.
@@ -86,3 +93,34 @@ An optional field for convenience. Set to `true` to disable a filter temporarily
 (project-config-when-property)=
 #### when: string
 The optional `when` field is a boolean expression that determines whether a filter runs. If the expression evaluates to `false`, the filter is skipped.This field is commonly used to target specific operating systems or architectures. You can learn more about its syntax and available variables {ref}`here<go-simple-eval>`.
+
+#### extraArguments: string
+The optional `extraArguments` field defines the behaviour for arguments passed to regolith from `regolith run` or `regolith watch` commands.
+
+This can be one of the following:
+- `ignore` (default) - Extra arguments are ignored. Only arguments from the `arguments` field are passed to the filter.
+- `override` - Arguments passed into the command replace those provided by the `arguments` field.
+- `append` - Extra arguments are added to the end of the arguments list provided by the the `arguments` field.
+
+(project-config-running-async-filers)=
+### Referencing filters to run in parallel
+If an object in the `filters` array contains a `asyncFilters` field, it references a list of filter objects (as above) defined in {ref}`filterDefinitions<filter-definitions>` that are ran in parallel.
+```json
+{
+    "filters": [
+        {
+            "filter": "example1"
+        },
+        {
+            "asyncFilters": [
+                {
+                    "filter": "example2"
+                },
+                {
+                    "filter": "example3"
+                }
+            ]
+        }
+    ]
+}
+```

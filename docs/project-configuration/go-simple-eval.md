@@ -40,3 +40,4 @@ Regolith provides several variables for use in expressions:
 - `profile`: The name of the profile being run.
 - `mode`: The mode that Regolith is running in (`run` or `watch`).
 - `initial`: Returns true for the first execution in "watch" mode; false in subsequent "watch" mode runs. In "run" mode, it always returns true.
+- `env`: The system environment variables. For example to access variable "EXAMPLE", you write `env.EXAMPLE`.
