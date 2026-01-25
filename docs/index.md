@@ -19,6 +19,7 @@ Format Versions <project-configuration/format-versions>
 Profiles <project-configuration/profiles>
 Export Targets <project-configuration/export-targets>
 Go-Simple-Eval <project-configuration/go-simple-eval>
+Environment Variables <project-configuration/environment-variables>
 ```
 
 ```{toctree}

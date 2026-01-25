@@ -33,6 +33,15 @@ A profile is a JSON object defined in the `config.json` file inside the `profile
         "disabled": true,
         "when": "os == 'windows' && arch == 'amd64'"
       }
+    ],
+    "preShell": {
+      "windows": ["$env:OS_NAME = 'Windows'"],
+      "linux": ["export OS_NAME='Linux'"],
+      "darwin": ["export OS_NAME='macOS'"]
+    },
+    "postShell": [
+      "echo This will run on every OS",
+      "echo You can have multiple commands here"
     ]
   },
   "otherProfile": {
@@ -56,6 +65,10 @@ A profile must contain two fields - `filters` and `export`.
 
 ## Export Properties
 The `export` field defines where the files will be exported. Since it can be complex, it is covered on its dedicated page {ref}`here<export-targets>`.
+
+(project-config-pre-and-post-shell)=
+## preShell and postShell Properties
+The optional `preShell` and `postShell` fields allow you to specify shell commands that run before and after the filters, respectively. They accept either a list of commands (to run on all operating systems) or an object with OS-specific commands. They're especially useful for setting {ref}`environment variables<environment-variables>` to be used by the filters.
 
 (project-config-filters-properties)=
 ## Filters Properties
