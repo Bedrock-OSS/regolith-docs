@@ -131,3 +131,7 @@ If an object in the `filters` array contains a `asyncFilters` field, it referenc
     ]
 }
 ```
+
+```{warning}
+When running filters in parallel, the order of execution is not guaranteed. Make sure that the filters do not have dependencies on each other to avoid unexpected behavior.
+```
