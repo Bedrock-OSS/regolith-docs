@@ -90,6 +90,7 @@ Arguments is an optional field that specify the command-line arguments to pass t
 #### settings: object
 Settings, like arguments, is an optional field that affects the command-line arguments. When it's present, its content is passed to the filter as a JSON string as the first argument. Like `arguments`, its purpose depends on the specific filter.
 
+(project-config-extra-arguments-property)=
 #### extraArguments: string
 The optional `extraArguments` field defines the behaviour for arguments passed to regolith from `regolith run` or `regolith watch` commands.
 
@@ -97,6 +98,8 @@ This can be one of the following:
 - `ignore` (default) - Extra arguments are ignored. Only arguments from the `arguments` field are passed to the filter.
 - `override` - Arguments passed into the command replace those provided by the `arguments` field.
 - `append` - Extra arguments are added to the end of the arguments list provided by the the `arguments` field.
+
+You can read more about passing extra arguments to filters in the {ref}`Passing Extra Arguments to Filters<passing-extra-arguments-to-filters>` section of the Running Filters page.
 
 (project-config-common-properties)=
 ### Common Properties

@@ -30,6 +30,15 @@ Filters work on copies of the RP, BP, and data folders, ensuring that the origin
 Some filters may modify the data folder if they opt into this feature. You can read more about this feature {ref}`here<filter-property-export-data>`. This functionality is useful for filters that need to store data between runs.
 ```
 
+(passing-extra-arguments-to-filters)=
+## Passing Extra Arguments to Filters
+You can pass additional arguments to filters by using the `--` flag followed by the arguments you want to pass. For example:
+```text
+regolith run -- --arg1 value1 --arg2 value2
+```
+
+Since these arguments are passed to every filter, Regolith provides a way to control how they are handled by each filter. You can read more about this feature in the {ref}`extraArguments<project-config-extra-arguments-property>` section of the Profiles page.
+
 ## Apply-Filter Command
 While `regolith run` and `regolith watch` are safe operations (as they generally don't modify project files), the `regolith apply-filter` command permanently applies the results of running a filter to your project.
 
