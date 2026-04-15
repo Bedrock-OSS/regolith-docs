@@ -3,6 +3,11 @@
 Regolith filters are versioned either using versions assigned by their creators with [semantic versioning](https://semver.org/)  or by the SHA values of commits in their GitHub repository. When you install a filter, Regolith saves the version of the filter in your {ref}`config file<project-config-file>` by default.
 
 ## Version Pinning
+
+```{note}
+If you're a filter developer looking for information about how to create versioned releases of your filter, see {ref}`Versioning Your Filter<versioning-your-filter>`.
+```
+
 When installing, you can optionally include a version key after two equals signs (`==`). The value provided after the equal signs decides whether the version of the installed filter will be pined or not.
 
 Version pinning makes sure that the filter is installed with the same version for everyone who runs the project, when they run `regolith install-all`.

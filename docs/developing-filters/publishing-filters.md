@@ -19,6 +19,25 @@ You can also contact the Regolith team on our [Discord server](https://discord.g
 
 The default resolver repository runs a GitHub Action every 24 hours to add new filters from the `known_repos` to the resolver. Note that one repository can have multiple filters, so if it's added to the list once, you can publish as many filters as you want without going through the process again.
 
+(versioning-your-filter)=
+## Versioning Your Filter
+To release a version of your filter, create a git tag in your repository following the pattern `<filter-name>-<semver>`, where `<filter-name>` is the name of your filter and `<semver>` is a [semantic version](https://semver.org/) number. Then push the tag to your remote repository.
+
+For example, to release version `1.0.0` of a filter called `my_filter`:
+
+```bash
+git tag my_filter-1.0.0
+git push --tags
+```
+
+Once the tag is pushed, users can install that specific version with:
+
+```
+regolith install my_filter==1.0.0
+```
+
+A single repository can contain multiple filters, and each filter is versioned independently using its own prefixed tags. For more details on how users consume versioned filters, see {ref}`Filter Versioning<filter-versioning>`.
+
 ## The regolith-filter Topic
 To help users discover your filters on GitHub, add the `regolith-filter` topic to your repository. This makes your filter searchable using this URL: [https://github.com/topics/regolith-filter](https://github.com/topics/regolith-filter).
 
