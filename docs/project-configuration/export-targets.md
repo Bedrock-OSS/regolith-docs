@@ -1,8 +1,42 @@
 (export-targets)=
 # Export Targets
-Export Targets are defined in {ref}`profileds<profiles>` and determine where your generated files will go, after Regolith is finished compiling.
+Export Targets are defined in {ref}`profiles<profiles>` and determine where your generated files will go, after Regolith is finished compiling.
 
 All export settings require the `target` property. Some export targets may require additional properties, which are detailed in the sections below.
+
+## Single Export Target
+By default, a profile has a single export target. The export target is specified as an object in the `export` field:
+
+```json
+"export": {
+    "target": "development",
+    "build": "standard",
+    "rpName": "'my_rp'",
+    "bpName": "'my_bp'"
+}
+```
+
+(multiple-export-targets)=
+## Multiple Export Targets
+Starting with format version `1.8.0`, you can specify multiple export targets per profile using an array. This allows you to export to several locations in a single run - for example, exporting to both a local build folder and a development pack folder simultaneously.
+
+```json
+"export": [
+    {
+        "target": "development",
+        "build": "standard"
+    },
+    {
+        "target": "local"
+    }
+]
+```
+
+```{note}
+- Empty arrays are not allowed. Use `"target": "none"` to explicitly disable export for a target.
+- The {ref}`--symlink-export<symlink_export>` flag is not supported when using multiple export targets. Regolith will fall back to regular file copying.
+- When using multiple export targets, Regolith cannot use file moves for export and will always copy files instead, which may be slightly slower.
+```
 
 ## Export Target Types
 ### Development Export Target

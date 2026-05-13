@@ -4,6 +4,7 @@ This page outlines changes introduced in different `formatVersion` values for th
 
 - `1.2.0`: The first available `formatVersion`. If the `formatVersion` field is not specified, this value is used as the default.
 - `1.4.0`: This version introduced changes to the `export` field functionality. You can learn about the current implementation of export targets on {ref}`its dedicated page<export-targets>`.Unfortunately, the `1.4.0` format change was made before Regolith implemented versioned documentation. To review its previous behavior, you'll need to consult the [source of the old documentation](https://github.com/Bedrock-OSS/regolith/blob/1.2.0/docs/docs/guide/export-targets.md) .
+- `1.8.0`: This version introduced {ref}`multiple export targets per profile<multiple-export-targets>`, allowing the `export` field to accept an array of export target objects in addition to a single object.
 
 ```{warning}
 The `formatVersion` field was introduced later in Regolith's development.

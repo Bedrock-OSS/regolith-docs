@@ -35,6 +35,94 @@ The cooldown duration between updates to the {ref}`resolver repositories<resolve
 
 The cooldown duration between updates to the {ref}`filter repositories<filter-cache>`. This is also specified in [Go duration format](https://pkg.go.dev/time#ParseDuration) . If you run `regolith install` multiple times quickly, the filter cache will only update after the cooldown period has elapsed.
 
+### tmp_dir: string
+**Default** : `""`
+
+Specifies the directory where Regolith creates its temporary files for running filters. When not set (or empty), Regolith uses the `.regolith/tmp` folder inside the project directory. Setting this to a custom path (e.g., a RAM drive) can significantly speed up filter execution by reducing disk I/O.
+
+```{warning}
+Regolith always creates a `tmp` subfolder inside the specified directory. This prevents accidental file deletion, since Regolith treats the contents of its working directory as safe to delete. However, if you use a folder named `tmp` for something important and set `tmp_dir` to its parent directory, that folder's contents could be deleted.
+```
+
+Example:
+```
+regolith config tmp_dir "R:/regolith_tmp"
+```
+
+(node-runner-override)=
+### node_runner_override: map[string]string
+**Default** : `{}`
+
+Allows you to override the runtime used to run NodeJS filters, redirecting them to use Bun or Deno instead. This is useful if you want to take advantage of Bun's or Deno's faster startup times without changing your filter definitions.
+
+The map keys are filter IDs (or `*` for a default override) and the values are the runtime to use (`nodejs`, `bun`, or `deno`).
+
+- Setting a key of `*` overrides the runner for all NodeJS filters unless a more specific override exists.
+- Setting a key matching a filter ID overrides the runner for that specific filter only.
+
+Example:
+```
+regolith config node_runner_override bun --key "*"
+regolith config node_runner_override deno --key "my_filter"
+```
+
+This would run all NodeJS filters with Bun, except `my_filter` which would use Deno.
+
+### bun_runner: string
+**Default** : `null`
+
+Specifies the path to the Bun executable. When not set, Regolith looks for `bun` on the system PATH.
+
+Example:
+```
+regolith config bun_runner "C:/Programs/bun/bun.exe"
+```
+
+### deno_runner: string
+**Default** : `null`
+
+Specifies the path to the Deno executable. When not set, Regolith looks for `deno` on the system PATH.
+
+### dotnet_runner: string
+**Default** : `null`
+
+Specifies the path to the .NET executable. When not set, Regolith looks for `dotnet` on the system PATH.
+
+### java_runner: string
+**Default** : `null`
+
+Specifies the path to the Java executable. When not set, Regolith looks for `java` on the system PATH.
+
+### nim_runner: string
+**Default** : `null`
+
+Specifies the path to the Nim executable. When not set, Regolith looks for `nim` on the system PATH.
+
+### nimble_runner: string
+**Default** : `null`
+
+Specifies the path to the Nimble executable (used for installing Nim package dependencies). When not set, Regolith looks for `nimble` on the system PATH.
+
+### node_runner: string
+**Default** : `null`
+
+Specifies the path to the Node executable. When not set, Regolith looks for `node` on the system PATH.
+
+### npm_runner: string
+**Default** : `null`
+
+Specifies the path to the npm executable (used for installing Node package dependencies). When not set, Regolith looks for `npm` on the system PATH.
+
+### python_runner: string
+**Default** : `null`
+
+Specifies the path to the Python executable. When not set, Regolith tries the platform-specific executable names (e.g., `python3`, `python`). Regolith uses `python -m pip` to install Python dependencies rather than calling `pip` directly.
+
+Example:
+```
+regolith config python_runner "C:/Programs/pypy3.11-v7.3.21-win64/pypy.exe"
+```
+
 (regolith-config-command)=
 ## Regolith Config Command
 The `regolith config` command is used to manage the user configuration of Regolith. It allows you to access and modify the configuration stored in the `user_config.json` file.
@@ -49,6 +137,8 @@ The behavior of this command changes depending on the flags and the number of ar
 - `regolith config <key> <value> --append` - Appends a value to a list property.
 - `regolith config <key> <value> --index <index>` - Replaces an item in a list property at the specified index.
 - `regolith config <key> --index <index> --delete` - Deletes an item in a list property at the specified index.
+- `regolith config <key> <value> --key <map-key>` - Sets a value in a map property at the specified key.
+- `regolith config <key> --key <map-key> --delete` - Deletes an entry from a map property at the specified key.
 
 Commands that print text can include the `--full` flag to display the configuration along with default values (if they are not defined in the configuration file). Without this flag, unspecified properties will be shown as null or an empty list.
 
@@ -62,6 +152,11 @@ Here is an example of a `user_config.json` file:
 	"username": "Bedrock-OSS",
 	"resolvers": [
 		"github.com/Bedrock-OSS/regolith-filter-resolver/resolver.json"
-	]
+	],
+	"tmp_dir": "R:/regolith_tmp",
+	"node_runner_override": {
+		"*": "bun"
+	},
+	"python_runner": "C:/Programs/pypy3.11-v7.3.21-win64/pypy.exe"
 }
 ```

@@ -37,3 +37,7 @@ The structure of the NodeJS filter definition is described below. You can read h
 The dependencies of a NodeJS filter are defined in a `package.json` file. You can read more about the `package.json` file in the NodeJS documentation. The NodeJS filters expect the dependencies to be installed in the `package.json` file located in the same directory as the script file unless specified otherwise in the `requirements` property.
 
 When developing a NodeJS filter with dependencies, you must create `package.json`. You can create it by using `npm init`.
+
+```{note}
+You can run NodeJS filters with Bun or Deno using the {ref}`node_runner_override<node-runner-override>` user configuration setting.
+```

@@ -34,7 +34,7 @@ Filter Resolvers <using-regolith/filter-resolvers>
 Running Filters <using-regolith/running-filters>
 Regolith Cache <using-regolith/regolith-cache>
 User Configuration <using-regolith/user-configuration>
-Experiments <using-regolith/experiments>
+Performance Options <using-regolith/experiments>
 Data Folder <using-regolith/data-folder>
 
 ```
@@ -45,6 +45,7 @@ Data Folder <using-regolith/data-folder>
 
 Filters Introduction <filters/filter-introduction>
 .NET Filters <filters/dotnet-filters>
+Bun Filters <filters/bun-filters>
 Deno Filters <filters/deno-filters>
 Executable Filters <filters/executable-filters>
 Java Filters <filters/java-filters>
