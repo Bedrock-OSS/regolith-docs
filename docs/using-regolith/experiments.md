@@ -18,6 +18,7 @@ regolith run --disable-size-time-check
 regolith watch --disable-size-time-check
 ```
 
+(symlink-export)=
 ## Symlink Export
 
 The `--symlink-export` flag allows Regolith to use symbolic links when exporting files from the {ref}`working directory<the-working-directory-of-filters>` to the output directory. Instead of copying files, Regolith creates symlinks in the working directory that point to the files in the output directory. This can speed up the export process, especially for large projects with many files.

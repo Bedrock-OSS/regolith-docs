@@ -11,6 +11,10 @@ The [Gametests](https://github.com/Bedrock-OSS/regolith-filters/tree/master/game
 The unusual name of the filter is a relic of its time of creation. The filter was created before current Scripting API was released. At that time, Minecraft only had the "gametest" API designed for writing tests of the packs. The filter was named after this API.
 ```
 
+```{note}
+You can run NodeJS filters with Bun or Deno using the {ref}`node_runner_override<node-runner-override>` user configuration setting. This means that having NodeJS is not required in some cases, however despite the amazing compatiblity of Bun and Deno projects with NodeJS, not all NodeJS filters will work with these runtimes.
+```
+
 ## Installing NodeJS
 
 Before you can run NodeJS filters, you will need to [install NodeJS](https://nodejs.org/en/download/).
@@ -37,7 +41,3 @@ The structure of the NodeJS filter definition is described below. You can read h
 The dependencies of a NodeJS filter are defined in a `package.json` file. You can read more about the `package.json` file in the NodeJS documentation. The NodeJS filters expect the dependencies to be installed in the `package.json` file located in the same directory as the script file unless specified otherwise in the `requirements` property.
 
 When developing a NodeJS filter with dependencies, you must create `package.json`. You can create it by using `npm init`.
-
-```{note}
-You can run NodeJS filters with Bun or Deno using the {ref}`node_runner_override<node-runner-override>` user configuration setting.
-```

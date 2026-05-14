@@ -34,7 +34,7 @@ Starting with format version `1.8.0`, you can specify multiple export targets pe
 
 ```{note}
 - Empty arrays are not allowed. Use `"target": "none"` to explicitly disable export for a target.
-- The {ref}`--symlink-export<symlink_export>` flag is not supported when using multiple export targets. Regolith will fall back to regular file copying.
+- The {ref}`--symlink-export<symlink-export>` flag is not supported when using multiple export targets. Regolith will fall back to regular file copying.
 - When using multiple export targets, Regolith cannot use file moves for export and will always copy files instead, which may be slightly slower.
 ```
 
