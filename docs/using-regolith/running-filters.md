@@ -7,7 +7,7 @@ There are three ways to run Regolith:
 - `regolith apply-filter`
 
 ## Run and Watch Commands
-The `run` and `watch` commands are quite similar. Both execute a profile, but there is a key difference: the `watch` command monitors changes in the RP, BP, {ref}`data<data-folder>` folders and optionally additional folders specified in the {ref}`watchPaths<watch-paths>` property of the configuration file, automatically rerunning the profile when changes are detected. In contrast, the `run` command executes the profile only once.The syntax for the `run` and `watch` commands is as follows:
+The `run` and `watch` commands are quite similar. Both execute a profile, but there is a key difference: the `watch` command monitors changes in the RP, BP, {ref}`data<data-folder>` folders and optionally additional folders specified in the {ref}`watchPaths<watch-paths>` property of the configuration file, automatically rerunning the profile when changes are detected. In contrast, the `run` command executes the profile only once. The syntax for the `run` and `watch` commands is as follows:
 
 ```text
 regolith run [profile-name]
@@ -18,6 +18,17 @@ regolith watch [profile-name]
 ```
 
 Here, `[profile-name]` refers to the name of the profile defined in your {ref}`config.json<project-config-file>` file that you wish to run. If you don't specify a profile name, the `default` profile will be used.
+
+A single run performs the following steps:
+1. Copy your source files into a temporary folder.
+2. Run all of the filters specified in the profile.
+3. Move the processed files to the target location defined in the profile's "export" property.
+
+Filters work on copies of the RP, BP, and data folders, ensuring that the original files remain untouched. This non-destructive behavior is preserved when using both the `run` and `watch` commands.
+
+```{warning}
+Some filters may modify the data folder if they opt into this feature. You can read more about this feature {ref}`here<filter-property-export-data>`. This functionality is useful for filters that need to store data between runs.
+```
 
 (unsafe-flag)=
 ### --unsafe Flag
@@ -34,15 +45,30 @@ regolith watch --unsafe
 Using `--unsafe` increases the risk of data loss. Only use this flag if you are confident that your export paths do not contain important files that are not managed by Regolith.
 ```
 
-A single run performs the following steps:
-1. Copy your source files into a temporary folder.
-2. Run all of the filters specified in the profile.
-3. Move the processed files to the target location defined in the profile's "export" property.
+(disable-size-time-check)=
+### --disable-size-time-check Flag
+By default, Regolith uses a size-time check optimization when exporting files. It skips copying files from source to the working directory, and from working directory to the output directory if their size and modification time match, as they are assumed to be identical. While this significantly speeds up subsequent exports for large projects, it can make the initial run slightly slower.
 
-Filters work on copies of the RP, BP, and data folders, ensuring that the original files remain untouched. This non-destructive behavior is preserved when using both the `run` and `watch` commands.
+This optimization is often unnecessary in continuous integration (CI) pipelines where Regolith only runs once, or in projects where files are generated dynamically on every run with changing sizes or timestamps. To bypass this check, use the `--disable-size-time-check` flag:
 
-```{warning}
-Some filters may modify the data folder if they opt into this feature. You can read more about this feature {ref}`here<filter-property-export-data>`. This functionality is useful for filters that need to store data between runs.
+```text
+regolith run --disable-size-time-check
+regolith watch --disable-size-time-check
+```
+
+(symlink-export)=
+### --symlink-export Flag
+The `--symlink-export` flag speeds up the export process for large projects by instructing Regolith to use symbolic links instead of copying files from the {ref}`working directory<the-working-directory-of-filters>`. It creates symlinks in the working directory that point directly to the files in the output directory.
+
+The main trade-off is that Regolith will delete the contents of the output directory before generating files. If the build process fails, the output directory might be left empty or incomplete until you run a successful build.
+
+```text
+regolith run --symlink-export
+regolith watch --symlink-export
+```
+
+```{note}
+When using this flag, Regolith ensures that output RP and BP folders are always created in the destination, even if they are empty, so the working directory symlinks remain valid.
 ```
 
 (passing-extra-arguments-to-filters)=

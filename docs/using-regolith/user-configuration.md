@@ -35,25 +35,31 @@ The cooldown duration between updates to the {ref}`resolver repositories<resolve
 
 The cooldown duration between updates to the {ref}`filter repositories<filter-cache>`. This is also specified in [Go duration format](https://pkg.go.dev/time#ParseDuration) . If you run `regolith install` multiple times quickly, the filter cache will only update after the cooldown period has elapsed.
 
+(tmp-dir-user-config)=
 ### tmp_dir: string
 **Default** : `""`
 
-Specifies the directory where Regolith creates its temporary files for running filters. When not set (or empty), Regolith uses the `.regolith/tmp` folder inside the project directory. Setting this to a custom path (e.g., a RAM drive) can significantly speed up filter execution by reducing disk I/O.
-
-```{warning}
-Regolith always creates a `tmp` subfolder inside the specified directory. This prevents accidental file deletion, since Regolith treats the contents of its working directory as safe to delete. However, if you use a folder named `tmp` for something important and set `tmp_dir` to its parent directory, that folder's contents could be deleted.
-```
+Specifies the directory where Regolith creates its temporary files for running filters. When not set (or empty), Regolith uses the `.regolith/tmp` folder inside the project directory.
 
 Example:
 ```
-regolith config tmp_dir "R:/regolith_tmp"
+regolith config tmp_dir "R:/"
 ```
+
+This setting can be used to achieve a significant speed up in filter execution when combined with a RAM drive. This is especially beneficial on the project that heavily rely on reading and writing files in the temporary directory during filter execution, moving it to RAM eliminates disk I/O bottlenecks.
+
+On Windows, you need third-party software (such as ImDisk) to create a RAM drive. On Linux, you can simply leverage `tmpfs`.
+
+```{warning}
+Regolith always creates a subfolder inside the specified directory. This prevents accidental file deletion. This is needed because Regolith treats the contents of its working directory as safe to delete. The name of the subfolder is an MD5 hash of the project's root directory path. This prevents collisions when running multiple Regolith instances at the same time.
+```
+
 
 (node-runner-override)=
 ### node_runner_override: map[string]string
 **Default** : `{}`
 
-Allows you to override the runtime used to run NodeJS filters, redirecting them to use Bun or Deno instead. This is useful if you want to take advantage of Bun's or Deno's faster startup times without changing your filter definitions.
+Allows you to override the runtime used to run NodeJS filters, redirecting them to use Bun or Deno instead. Using Deno or Bun can be faster than NodeJS in some cases.
 
 The map keys are filter IDs (or `*` for a default override) and the values are the runtime to use (`nodejs`, `bun`, or `deno`).
 
@@ -67,6 +73,10 @@ regolith config node_runner_override deno --key "my_filter"
 ```
 
 This would run all NodeJS filters with Bun, except `my_filter` which would use Deno.
+
+```{warning}
+The `*` is a special key. You **can't** use star-based patterns like `some_prefix_*` in configuration to match multiple filters at once. These kind of names would be interpreted as literal keys.
+```
 
 ### bun_runner: string
 **Default** : `null`
@@ -116,7 +126,7 @@ Specifies the path to the npm executable (used for installing Node package depen
 ### python_runner: string
 **Default** : `null`
 
-Specifies the path to the Python executable. When not set, Regolith tries the platform-specific executable names (e.g., `python3`, `python`). Regolith uses `python -m pip` to install Python dependencies rather than calling `pip` directly.
+Specifies the path to the Python executable. When not set, Regolith tries the platform-specific executable names (e.g., `python3`, `python`). Regolith uses `python -m pip` to install Python dependencies rather than calling `pip` directly, so unlike some of the other runtimes that use a different executable for running and installation it doesn't need a separate `pip_runner` setting.
 
 Example:
 ```
@@ -131,14 +141,14 @@ The behavior of this command changes depending on the flags and the number of ar
 
 - `regolith config` - Prints all properties defined in the user configuration file.
 - `regolith config --full` - Prints all properties, including default values for properties that are unspecified.
-- `regolith config <key>` - Prints the value of the specified property.
-- `regolith config <key> <value>` - Sets the value of the specified property.
-- `regolith config <key> --delete` - Deletes the specified property.
-- `regolith config <key> <value> --append` - Appends a value to a list property.
-- `regolith config <key> <value> --index <index>` - Replaces an item in a list property at the specified index.
-- `regolith config <key> --index <index> --delete` - Deletes an item in a list property at the specified index.
-- `regolith config <key> <value> --key <map-key>` - Sets a value in a map property at the specified key.
-- `regolith config <key> --key <map-key> --delete` - Deletes an entry from a map property at the specified key.
+- `regolith config <setting>` - Prints the value of the specified property.
+- `regolith config <setting> <value>` - Sets the value of the specified property.
+- `regolith config <setting> --delete` - Deletes the specified property.
+- `regolith config <setting> <value> --append` - Appends a value to a list property.
+- `regolith config <setting> <value> --index <index>` - Replaces an item in a list property at the specified index.
+- `regolith config <setting> --index <index> --delete` - Deletes an item in a list property at the specified index.
+- `regolith config <setting> <key> <value>` - Sets a value in a map property at the specified key.
+- `regolith config <setting> <key> --delete` - Deletes an entry from a map property at the specified key.
 
 Commands that print text can include the `--full` flag to display the configuration along with default values (if they are not defined in the configuration file). Without this flag, unspecified properties will be shown as null or an empty list.
 
@@ -153,7 +163,7 @@ Here is an example of a `user_config.json` file:
 	"resolvers": [
 		"github.com/Bedrock-OSS/regolith-filter-resolver/resolver.json"
 	],
-	"tmp_dir": "R:/regolith_tmp",
+	"tmp_dir": "R:/",
 	"node_runner_override": {
 		"*": "bun"
 	},

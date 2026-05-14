@@ -4,9 +4,11 @@ Export Targets are defined in {ref}`profiles<profiles>` and determine where your
 
 All export settings require the `target` property. Some export targets may require additional properties, which are detailed in the sections below.
 
-## Single Export Target
-By default, a profile has a single export target. The export target is specified as an object in the `export` field:
+(single-or-multiple-export-targets)=
+## Single or Multiple Export Targets
+The `export` field can either be a single object or an array of objects. Using an array allows you to export to several locations in a single run.
 
+Single export target:
 ```json
 "export": {
     "target": "development",
@@ -15,11 +17,7 @@ By default, a profile has a single export target. The export target is specified
     "bpName": "'my_bp'"
 }
 ```
-
-(multiple-export-targets)=
-## Multiple Export Targets
-Starting with format version `1.8.0`, you can specify multiple export targets per profile using an array. This allows you to export to several locations in a single run - for example, exporting to both a local build folder and a development pack folder simultaneously.
-
+Multiple export targets::
 ```json
 "export": [
     {

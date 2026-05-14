@@ -1,10 +1,10 @@
 (bun-filters)=
 # Bun Filters
 
-Bun filters can run scripts written in JavaScript or TypeScript for the Bun runtime as filters. Bun is a fast, all-in-one JavaScript/TypeScript toolkit that can significantly speed up filter execution compared to NodeJS.
+Bun filters can run scripts written in JavaScript or TypeScript for the Bun runtime as filters.
 
 ```{note}
-It is recommended to publish filters as NodeJS filters unless your filter uses Bun-specific features. Users can use the {ref}`node_runner_override<node-runner-override>` user configuration setting to run NodeJS filters with Bun, making them portable across runtimes.
+If you're a filter developer, it's recommended to publish filters as NodeJS filters unless your filter uses Bun-specific features. Users can use the {ref}`node_runner_override<node-runner-override>` configuration setting to run NodeJS filters with Bun, making them portable across runtimes.
 ```
 
 ## Installing Bun
@@ -28,13 +28,3 @@ The structure of the Bun filter definition is described below. You can read how 
 ## Requirements and Dependencies
 
 The dependencies of a Bun filter are defined in a `package.json` file. When a `package.json` file is found in the same directory as the script, Regolith automatically runs `bun install` during `regolith install` to install the dependencies.
-
-## Running NodeJS Filters with Bun
-
-If you want to run existing NodeJS filters using the Bun runtime (for improved performance), you can use the {ref}`node_runner_override<node-runner-override>` user configuration setting instead of changing the filter definition:
-
-```
-regolith config node_runner_override bun --key "*"
-```
-
-This overrides all NodeJS filters to run with Bun, without modifying the filter definitions in your `config.json`.
