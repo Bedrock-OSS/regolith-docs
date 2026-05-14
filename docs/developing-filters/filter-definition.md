@@ -10,6 +10,7 @@ While the specific syntax varies by filter type (detailed in their respective se
 
 Regolith currently supports the following filter kinds:
 - {ref}`.NET<dotnet-filters>`
+- {ref}`Bun<bun-filters>`
 - {ref}`Deno<deno-filters>`
 - {ref}`Executable<executable-filters>`
 - {ref}`Java<java-filters>`

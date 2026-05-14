@@ -7,7 +7,7 @@ There are three ways to run Regolith:
 - `regolith apply-filter`
 
 ## Run and Watch Commands
-The `run` and `watch` commands are quite similar. Both execute a profile, but there is a key difference: the `watch` command monitors changes in the RP, BP, {ref}`data<data-folder>` folders and optionally additional folders specified in the {ref}`watchPaths<watch-paths>` property of the configuration file, automatically rerunning the profile when changes are detected. In contrast, the `run` command executes the profile only once.The syntax for the `run` and `watch` commands is as follows:
+The `run` and `watch` commands are quite similar. Both execute a profile, but there is a key difference: the `watch` command monitors changes in the RP, BP, {ref}`data<data-folder>` folders and optionally additional folders specified in the {ref}`watchPaths<watch-paths>` property of the configuration file, automatically rerunning the profile when changes are detected. In contrast, the `run` command executes the profile only once. The syntax for the `run` and `watch` commands is as follows:
 
 ```text
 regolith run [profile-name]
@@ -28,6 +28,47 @@ Filters work on copies of the RP, BP, and data folders, ensuring that the origin
 
 ```{warning}
 Some filters may modify the data folder if they opt into this feature. You can read more about this feature {ref}`here<filter-property-export-data>`. This functionality is useful for filters that need to store data between runs.
+```
+
+(unsafe-flag)=
+### --unsafe Flag
+The `--unsafe` flag disables Regolith's file protection safety checks during export. By default, Regolith verifies that the files in the export directory were created by Regolith before deleting or overwriting them. This prevents accidental data loss if the export path points to a directory with existing user files.
+
+When `--unsafe` is used, these safety checks are skipped, which can speed up the export process — especially for large projects.
+
+```text
+regolith run --unsafe
+regolith watch --unsafe
+```
+
+```{warning}
+Using `--unsafe` increases the risk of data loss. Only use this flag if you are confident that your export paths do not contain important files that are not managed by Regolith.
+```
+
+(disable-size-time-check)=
+### --disable-size-time-check Flag
+By default, Regolith uses a size-time check optimization when exporting files. It skips copying files from source to the working directory, and from working directory to the output directory if their size and modification time match, as they are assumed to be identical. While this significantly speeds up subsequent exports for large projects, it can make the initial run slightly slower.
+
+This optimization is often unnecessary in continuous integration (CI) pipelines where Regolith only runs once, or in projects where files are generated dynamically on every run with changing sizes or timestamps. To bypass this check, use the `--disable-size-time-check` flag:
+
+```text
+regolith run --disable-size-time-check
+regolith watch --disable-size-time-check
+```
+
+(symlink-export)=
+### --symlink-export Flag
+The `--symlink-export` flag speeds up the export process for large projects by instructing Regolith to use symbolic links instead of copying files from the {ref}`working directory<the-working-directory-of-filters>`. It creates symlinks in the working directory that point directly to the files in the output directory.
+
+The main trade-off is that Regolith will delete the contents of the output directory before generating files. If the build process fails, the output directory might be left empty or incomplete until you run a successful build.
+
+```text
+regolith run --symlink-export
+regolith watch --symlink-export
+```
+
+```{note}
+When using this flag, Regolith ensures that output RP and BP folders are always created in the destination, even if they are empty, so the working directory symlinks remain valid.
 ```
 
 (passing-extra-arguments-to-filters)=

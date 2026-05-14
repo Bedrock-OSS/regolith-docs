@@ -18,7 +18,7 @@ Example configuration file:
         "resourcePack": "./packs/RP"
     },
     "regolith": {
-        "formatVersion": "1.4.0",
+        "formatVersion": "1.8.0",
         "dataPath": "./packs/data",
         "watchPaths": ["custom_watched_folder"],
         "filterDefinitions": {

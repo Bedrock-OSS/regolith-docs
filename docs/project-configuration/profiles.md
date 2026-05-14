@@ -64,7 +64,7 @@ The code above defines two profiles:
 A profile must contain two fields - `filters` and `export`.
 
 ## Export Properties
-The `export` field defines where the files will be exported. Since it can be complex, it is covered on its dedicated page {ref}`here<export-targets>`.
+The `export` field defines where the files will be exported. It can be either a single export target object or an array of export target objects (for exporting to multiple locations). This is covered on its dedicated page {ref}`here<export-targets>`.
 
 (project-config-pre-and-post-shell)=
 ## preShell and postShell Properties
