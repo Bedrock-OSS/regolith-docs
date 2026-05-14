@@ -35,6 +35,7 @@ Running Filters <using-regolith/running-filters>
 Regolith Cache <using-regolith/regolith-cache>
 User Configuration <using-regolith/user-configuration>
 Data Folder <using-regolith/data-folder>
+Performance Tips <using-regolith/performance-tips>
 
 ```
 
