@@ -68,8 +68,8 @@ The map keys are filter IDs (or `*` for a default override) and the values are t
 
 Example:
 ```
-regolith config node_runner_override bun --key "*"
-regolith config node_runner_override deno --key "my_filter"
+regolith config node_runner_override "*" bun
+regolith config node_runner_override "my_filter" deno
 ```
 
 This would run all NodeJS filters with Bun, except `my_filter` which would use Deno.
