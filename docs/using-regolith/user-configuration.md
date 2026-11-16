@@ -118,10 +118,11 @@ Specifies the path to the Nimble executable (used for installing Nim package dep
 
 Specifies the path to the Node executable. When not set, Regolith looks for `node` on the system PATH.
 
+(npm-runner)=
 ### npm_runner: string
 **Default** : `null`
 
-Specifies the path to the npm executable (used for installing Node package dependencies). When not set, Regolith looks for `npm` on the system PATH.
+Specifies the path to the npm executable (used for installing Node package dependencies and for downloading {ref}`filters from npm registries<npm-filter-source>`). When not set, Regolith looks for `npm` on the system PATH.
 
 ### python_runner: string
 **Default** : `null`

@@ -24,3 +24,7 @@ If you prefer not to pin the version, you have two options:
 If you don't specify a version, the `install` command will automatically choose a sensible default. It will first check for the latest release, and if no release is found (in the case of filters without releases), it will select the latest commit from the repository. In both cases, the installed version will be **pinned**.
 
 In your `config.json`, each {ref}`filter definition<filter-definitions>` will include a `version` field that specifies which version of the filter to use. This field can contain a semver version, commit SHA, or the strings `HEAD` or `latest`, corresponding to the version you specified when installing the filter.
+
+(npm-filter-versions)=
+## Versions of Filters From npm Registries
+Filters from {ref}`npm registries<npm-filter-source>` accept exact versions and `latest` like other filters, plus anything else npm understands as a version: a [semver range](https://docs.npmjs.com/cli/using-npm/semver#ranges) like `^1.2.0` or `1.x`, or a [dist-tag](https://docs.npmjs.com/cli/commands/npm-dist-tag) like `next`. Regolith resolves ranges and dist-tags to the highest matching published version each time you run `regolith install-all`, so they aren't pinned. `HEAD` and commit SHAs don't apply to npm packages.

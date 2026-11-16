@@ -15,7 +15,7 @@ For instance, if a filter depends on Python, you can find the installation instr
 (install-command)=
 ## Install Command
 ```{warning}
-The `install` command requires `git`. You can read more about Git {ref}`here<git-dependency>`.
+The `install` command requires `git` for filters hosted in Git repositories. You can read more about Git {ref}`here<git-dependency>`.
 ```
 
 Regolith provides a powerful `install` command that downloads filters from Git repositories and installs any necessary libraries. The general format is:
@@ -49,6 +49,21 @@ You can install multiple filters at once by passing multiple arguments:
 ```text
 regolith install name_ninja texture_list
 ```
+
+(install-from-npm)=
+### Installing From npm Registries
+To install a filter published to an npm registry, add the `npm:` prefix to the name of the package:
+```text
+regolith install npm:@my-scope/my-regolith-filter
+```
+
+The filter is added to the `filterDefinitions` under the name of the package without its scope (`my-regolith-filter` in this example). You can choose the version after `==`, or after `@` like in npm:
+```text
+regolith install npm:@my-scope/my-regolith-filter==1.2.0
+regolith install npm:@my-scope/my-regolith-filter@1.2.0
+```
+
+Without a version, Regolith pins the version that the `latest` dist-tag points to. You can learn how to publish such filters and how to configure private registries in {ref}`Filter Sources<npm-filter-source>`.
 
 The `install` command also supports installing specific versions of filters. For more details, refer to the {ref}`Filter Versioning<filter-versioning>` page. By default, Regolith installs the latest release of each filter.
 
@@ -85,7 +100,7 @@ When installing multiple filters in quick succession, Regolith avoids unnecessar
 
 In some situations, you might want to skip the cache wait time and force an update. The `install` command has two flags that can force a cache update:
 
-- `--force-filter-refresh`: Forces the update of the {ref}`filter cache<filter-cache>`, even if the filter repository was downloaded recently.
+- `--force-filter-refresh`: Forces the update of the {ref}`filter cache<filter-cache>`, even if the filter repository was downloaded recently. For filters from npm registries, it makes npm check its cached packages with the registry.
 - `--force-resolver-refresh`: Forces the update of the {ref}`resolver cache<resolver-cache>`, even if the resolver repository was downloaded recently. Note: This flag is not available for the `install-all` command because `install-all` doesn't use resolvers; it depends on the URLs provided directly in the {ref}`config.json<project-config-file>`.
 
 You can adjust the default cooldown times for downloading filters in your {ref}`user configuration<user-configuration>`.
