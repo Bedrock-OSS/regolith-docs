@@ -7,6 +7,51 @@ You can install online filters using the {ref}`regolith install<installing-filte
 
 If you wnat to learn by example, you can check out the {ref}`Create Online Filter Tutorial<create-online-filter-tutorial>`. It gives you a quick step-by-step guide but doesn't go into the details of the filter development that you can find here.
 
+(online-filter-sources)=
+## Filter Sources
+The {ref}`filter definition<filter-definitions>` of an online filter in `config.json` says where Regolith downloads the filter from. You usually don't write it by hand, because the {ref}`regolith install<installing-filters>` command adds it for you. Online filters can come from two kinds of sources.
+
+(git-filter-source)=
+### Git Repositories
+The `url` property points to a Git repository. Write it without the `https://` prefix:
+```json
+"filterDefinitions": {
+    "name_ninja": {
+        "url": "github.com/Bedrock-OSS/regolith-filters",
+        "version": "1.2.4"
+    }
+}
+```
+
+The name of the filter definition (`name_ninja`) is the name of the folder that holds the filter in the root of the repository, as described in the {ref}`structure of an online filter project<online-filter-structure>`. One repository can hold many filters.
+
+The `version` property can be a semantic version, a commit SHA, `HEAD` or `latest`. A semantic version like `1.2.4` refers to the `<filter-name>-<version>` tag of the repository (`name_ninja-1.2.4` here). See {ref}`Filter Versioning<filter-versioning>` for what each value does and {ref}`Versioning Your Filter<versioning-your-filter>` for how to release versions.
+
+Downloading filters from Git repositories requires {ref}`Git<git-dependency>`.
+
+(npm-filter-source)=
+### npm Registries
+The `npm` property names a package published to an npm registry, including its scope if it has one:
+```json
+"filterDefinitions": {
+    "my-regolith-filter": {
+        "npm": "@my-scope/my-regolith-filter",
+        "version": "1.0.0"
+    }
+}
+```
+
+The package holds a single filter, with its `filter.json` file in the root of the package. Its other files follow the same layout as a filter folder in a Git repository.
+
+The `version` property is required. Besides an exact version and `latest`, it accepts any version that npm understands, like the `^1.0.0` range or a `next` dist-tag. See {ref}`Filter Versioning<npm-filter-versions>`.
+
+Regolith downloads the package with npm, version 7.18 or newer. If npm isn't on your PATH, set its location with the {ref}`npm_runner<npm-runner>` property of the user configuration. npm runs in the root of the project, so it uses the same registries and credentials as `npm install` would there, from your `.npmrc` files. For example, to download the `@my-scope` packages from a private registry:
+```ini
+@my-scope:registry=https://npm.example.com/
+//npm.example.com/:_authToken=${NPM_TOKEN}
+```
+
+(online-filter-structure)=
 ## Structure of an Online Filter Project
 To create an online filter, the repository must follow a specific structure. Each filter must have its own folder at the root of the repository. The folder name becomes the filter's name.
 
