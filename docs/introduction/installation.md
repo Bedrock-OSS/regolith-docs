@@ -62,6 +62,28 @@ environment.systemPackages = [
 ];
 ```
 
+## Homebrew (Mac)
+
+Regolith can be installed on macOS through Homebrew.
+
+1. Add the Regolith tap:
+
+```text
+brew tap Bedrock-OSS/regolith
+```
+
+2. Install Regolith:
+
+```text
+brew install regolith
+```
+
+To update Regolith later, run:
+
+```text
+brew upgrade regolith
+```
+
 ## Stand-alone Executable File (Linux, Mac, and Windows)
 
 Regolith can also be installed as a stand-alone executable. Download the appropriate ZIP file for your operating system from the [GitHub release page](https://github.com/Bedrock-OSS/regolith/releases/latest).
